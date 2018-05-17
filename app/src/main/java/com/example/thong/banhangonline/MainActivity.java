@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         navigationTabBar.setBadgeGravity(NavigationTabBar.BadgeGravity.BOTTOM);
         navigationTabBar.setBadgePosition(NavigationTabBar.BadgePosition.CENTER);
         navigationTabBar.setBadgeSize(15);
-        navigationTabBar.setTitleSize(15);
+        navigationTabBar.setTitleSize(20);
         navigationTabBar.setIconSizeFraction(0.5f);
     }
 
@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
             public void onEndTabSelected(NavigationTabBar.Model model, int index) {
                switch (index){
                    case 0: {
-
                        fragment =new fragment_home();
                        FragmentTransaction transaction =manager.beginTransaction();
                        transaction.replace(R.id.viewpager,fragment);

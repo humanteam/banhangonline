@@ -28,8 +28,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewpager"
-        app:ntb_active_color="#d5ff0e16"
-        app:ntb_animation_duration="400"
+        app:ntb_active_color="#eaed050d"
+        app:ntb_animation_duration="200"
         app:ntb_badge_bg_color="#874242"
         app:ntb_badge_gravity="top"
         app:ntb_badge_position="right"
@@ -37,7 +37,7 @@
         app:ntb_badge_use_typeface="true"
         app:ntb_bg_color="#fffefe"
         app:ntb_corners_radius="2dp"
-        app:ntb_inactive_color="#c75f3be1"
+        app:ntb_inactive_color="#a8292926"
         app:ntb_titled="true" />
 
 
