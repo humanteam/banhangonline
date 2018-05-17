@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void addEvent() {
         final FragmentManager manager=getFragmentManager();
+
         navigationTabBar.setOnTabBarSelectedIndexListener(new NavigationTabBar.OnTabBarSelectedIndexListener() {
             @Override
             public void onStartTabSelected(NavigationTabBar.Model model, int index) {
