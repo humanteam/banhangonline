@@ -106,11 +106,9 @@
         android:layout_marginTop="78dp"
         android:weightSum="1"
         android:orientation="horizontal">
-
-
-        <GridView
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:numColumns="2"/>
+            android:id="@+id/main_fragment"/>
     </LinearLayout>
 </RelativeLayout>
