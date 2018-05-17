@@ -39,6 +39,4 @@
         app:ntb_corners_radius="2dp"
         app:ntb_inactive_color="#a8292926"
         app:ntb_titled="true" />
-
-
 </android.support.constraint.ConstraintLayout>
