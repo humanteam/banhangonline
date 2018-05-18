@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.thong.fragment.fragment_them;
 import com.example.thong.fragment.fragment_thietbi;
 import com.example.thong.fragment.fragment_giohang;
 import com.example.thong.fragment.fragment_home;
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                         transaction.commit();
                     };break;
                     case 5:{
-                        fragment =new fragment_giohang();
+                        fragment =new fragment_them();
                         FragmentTransaction transaction =manager.beginTransaction();
                         transaction.replace(R.id.viewpager,fragment);
                         transaction.commit();
