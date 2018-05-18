@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.example.thong.banhangonline.R;
 
-public class fragment_dientu extends Fragment{
+public class fragment_thietbi extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {

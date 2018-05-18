@@ -8,5 +8,5 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:textColor="#000"
-    android:text="Đồ điện tử"/>
+    android:text="Thiết bị"/>
 </LinearLayout>
