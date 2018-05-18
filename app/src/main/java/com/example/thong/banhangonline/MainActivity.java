@@ -66,14 +66,12 @@ public class MainActivity extends AppCompatActivity {
 
         navigationTabBar =findViewById(R.id.ntb);
         navigationTabBar.setModels(listmodel);
+        navigationTabBar.setModelIndex(0);
         navigationTabBar.setTitleMode(NavigationTabBar.TitleMode.ACTIVE);
         navigationTabBar.setBadgeGravity(NavigationTabBar.BadgeGravity.BOTTOM);
         navigationTabBar.setBadgePosition(NavigationTabBar.BadgePosition.CENTER);
-        navigationTabBar.setIsBadged(true);
-        navigationTabBar.setIsTitled(true);;
-        navigationTabBar.setIsSwiped(true);
         navigationTabBar.setBadgeSize(15);
-        navigationTabBar.setTitleSize(15);
+        navigationTabBar.setTitleSize(20);
         navigationTabBar.setIconSizeFraction(0.5f);
     }
 
