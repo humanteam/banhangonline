@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.thong.fragment.fragment_them;
 import com.example.thong.fragment.fragment_thietbi;
 import com.example.thong.fragment.fragment_giohang;
 import com.example.thong.fragment.fragment_home;
@@ -22,6 +23,7 @@ import devlight.io.library.ntb.NavigationTabBar;
 
 public class MainActivity extends AppCompatActivity {
 
+    FragmentManager manager =getFragmentManager();
     NavigationTabBar navigationTabBar;
     Fragment fragment =null;
     ArrayList<NavigationTabBar.Model> listmodel =new ArrayList<>();
@@ -80,8 +82,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addEvent() {
-        final FragmentManager manager=getFragmentManager();
-
         navigationTabBar.setOnTabBarSelectedIndexListener(new NavigationTabBar.OnTabBarSelectedIndexListener() {
             @Override
             public void onStartTabSelected(NavigationTabBar.Model model, int index) {
@@ -91,44 +91,30 @@ public class MainActivity extends AppCompatActivity {
             public void onEndTabSelected(NavigationTabBar.Model model, int index) {
                 switch (index){
                     case 0: {
-
-                        fragment =new fragment_home();
-                        FragmentTransaction transaction =manager.beginTransaction();
-                        transaction.replace(R.id.viewpager,fragment);
-                        transaction.commit();
+                     changeFragment(new fragment_home(),manager);
                     }break;
                     case 1:{
-                        fragment =new fragment_mypham();
-                        FragmentTransaction transaction =manager.beginTransaction();
-                        transaction.replace(R.id.viewpager,fragment);
-                        transaction.commit();
+                        changeFragment(new fragment_mypham(),manager);
                     };break;
                     case 2:{
-                        fragment =new fragment_toc();
-                        FragmentTransaction transaction =manager.beginTransaction();
-                        transaction.replace(R.id.viewpager,fragment);
-                        transaction.commit();
+                      changeFragment(new fragment_toc(),manager);
                     };break;
                     case 3:{
-                        fragment =new fragment_thietbi();
-                        FragmentTransaction transaction =manager.beginTransaction();
-                        transaction.replace(R.id.viewpager,fragment);
-                        transaction.commit();
+                        changeFragment(new fragment_thietbi(),manager);
                     };break;
                     case 4:{
-                        fragment =new fragment_giohang();
-                        FragmentTransaction transaction =manager.beginTransaction();
-                        transaction.replace(R.id.viewpager,fragment);
-                        transaction.commit();
+                        changeFragment(new fragment_giohang(),manager);
                     };break;
                     case 5:{
-                        fragment =new fragment_giohang();
-                        FragmentTransaction transaction =manager.beginTransaction();
-                        transaction.replace(R.id.viewpager,fragment);
-                        transaction.commit();
+                        changeFragment(new fragment_them(),manager);
                     };break;
                 }
             }
         });
+    }
+    void changeFragment(Fragment fragment,FragmentManager manager){
+        FragmentTransaction transaction =manager.beginTransaction();
+        transaction.replace(R.id.viewpager,fragment);
+        transaction.commit();
     }
 }
