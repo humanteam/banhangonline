@@ -60,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
                 .Builder(getResources().getDrawable(R.drawable.buy),Color.WHITE)
                 .title("Giỏ Hàng")
                 .badgeTitle("giohang").build());
+        listmodel.add(new NavigationTabBar.Model
+                .Builder(getResources().getDrawable(R.drawable.caidat),Color.WHITE)
+                .title("Thêm")
+                .badgeTitle("Thêm").build());
     }
 
     private void addControlls() {
@@ -77,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void addEvent() {
         final FragmentManager manager=getFragmentManager();
+
         navigationTabBar.setOnTabBarSelectedIndexListener(new NavigationTabBar.OnTabBarSelectedIndexListener() {
             @Override
             public void onStartTabSelected(NavigationTabBar.Model model, int index) {
@@ -111,6 +116,12 @@ public class MainActivity extends AppCompatActivity {
                         transaction.commit();
                     };break;
                     case 4:{
+                        fragment =new fragment_giohang();
+                        FragmentTransaction transaction =manager.beginTransaction();
+                        transaction.replace(R.id.viewpager,fragment);
+                        transaction.commit();
+                    };break;
+                    case 5:{
                         fragment =new fragment_giohang();
                         FragmentTransaction transaction =manager.beginTransaction();
                         transaction.replace(R.id.viewpager,fragment);
