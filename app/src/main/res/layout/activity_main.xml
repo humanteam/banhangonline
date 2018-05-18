@@ -1,43 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#ffffff"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:orientation="vertical">
 
-    <FrameLayout
-        android:background="#cef9f3f3"
-        android:id="@+id/viewpager"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/ntb"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
 
-    <devlight.io.library.ntb.NavigationTabBar
-        android:id="@+id/ntb"
-        android:layout_width="0dp"
+        <RelativeLayout
+            android:id="@+id/RelativeLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#ab9494">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp">
+
+                <EditText
+                    android:id="@+id/edtSeach3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:ems="10"
+                    android:padding="15dp"
+                    android:hint="@string/nh_p_t_c_n_t_m_ki_m"
+                    android:inputType="text"
+                    android:textColor="#FFF"
+                    android:textColorHint="#FFF"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true">
+
+                <ImageView
+                    android:id="@+id/im_timkiem"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/seach"
+                    android:src="@drawable/timkiem" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewpager"
-        app:ntb_active_color="#eaed050d"
-        app:ntb_animation_duration="200"
-        app:ntb_badge_bg_color="#874242"
-        app:ntb_badge_gravity="top"
-        app:ntb_badge_position="right"
-        app:ntb_badge_title_color="#ffffffff"
-        app:ntb_badge_use_typeface="true"
-        app:ntb_bg_color="#fffefe"
-        app:ntb_corners_radius="2dp"
-        app:ntb_inactive_color="#a8292926"
-        app:ntb_titled="true" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="1.0">
+
+        <FrameLayout
+            android:id="@+id/viewpager"
+            android:layout_width="0dp"
+            android:layout_height="469dp"
+            app:layout_constraintBottom_toTopOf="@+id/ntb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="Suspicious0dp">
+
+        </FrameLayout>
+
+        <devlight.io.library.ntb.NavigationTabBar
+            android:id="@+id/ntb"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewpager"
+            app:ntb_active_color="#6e4747"
+            app:ntb_animation_duration="200"
+            app:ntb_badge_bg_color="#874242"
+            app:ntb_badge_gravity="top"
+            app:ntb_badge_position="right"
+            app:ntb_badge_title_color="#ffffffff"
+            app:ntb_bg_color="#ab9494"
+            app:ntb_corners_radius="2dp"
+            app:ntb_inactive_color="#ffffff"
+            app:ntb_title_mode="all"
+            app:ntb_titled="true" />
+    </LinearLayout>
+
+
+
+
 </android.support.constraint.ConstraintLayout>

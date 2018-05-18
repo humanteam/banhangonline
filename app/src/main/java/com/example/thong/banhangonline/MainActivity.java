@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.graphics.Color;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -59,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
                 .Builder(getResources().getDrawable(R.drawable.buy),Color.WHITE)
                 .title("Giỏ Hàng")
                 .badgeTitle("giohang").build());
+        listmodel.add(new NavigationTabBar.Model
+                .Builder(getResources().getDrawable(R.drawable.caidat),Color.WHITE)
+                .title("Thêm")
+                .badgeTitle("Thêm").build());
     }
 
     private void addControlls() {
@@ -76,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void addEvent() {
         final FragmentManager manager=getFragmentManager();
+
         navigationTabBar.setOnTabBarSelectedIndexListener(new NavigationTabBar.OnTabBarSelectedIndexListener() {
             @Override
             public void onStartTabSelected(NavigationTabBar.Model model, int index) {
@@ -83,38 +89,45 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onEndTabSelected(NavigationTabBar.Model model, int index) {
-               switch (index){
-                   case 0: {
-                       fragment =new fragment_home();
-                       FragmentTransaction transaction =manager.beginTransaction();
-                       transaction.replace(R.id.viewpager,fragment);
-                       transaction.commit();
-                   }break;
-                   case 1:{
-                       fragment =new fragment_mypham();
-                       FragmentTransaction transaction =manager.beginTransaction();
-                       transaction.replace(R.id.viewpager,fragment);
-                       transaction.commit();
-                   };break;
-                   case 2:{
-                       fragment =new fragment_toc();
-                       FragmentTransaction transaction =manager.beginTransaction();
-                       transaction.replace(R.id.viewpager,fragment);
-                       transaction.commit();
-                   };break;
-                   case 3:{
-                       fragment =new fragment_thietbi();
-                       FragmentTransaction transaction =manager.beginTransaction();
-                       transaction.replace(R.id.viewpager,fragment);
-                       transaction.commit();
-                   };break;
-                   case 4:{
-                       fragment =new fragment_giohang();
-                       FragmentTransaction transaction =manager.beginTransaction();
-                       transaction.replace(R.id.viewpager,fragment);
-                       transaction.commit();
-                   };break;
-               }
+                switch (index){
+                    case 0: {
+
+                        fragment =new fragment_home();
+                        FragmentTransaction transaction =manager.beginTransaction();
+                        transaction.replace(R.id.viewpager,fragment);
+                        transaction.commit();
+                    }break;
+                    case 1:{
+                        fragment =new fragment_mypham();
+                        FragmentTransaction transaction =manager.beginTransaction();
+                        transaction.replace(R.id.viewpager,fragment);
+                        transaction.commit();
+                    };break;
+                    case 2:{
+                        fragment =new fragment_toc();
+                        FragmentTransaction transaction =manager.beginTransaction();
+                        transaction.replace(R.id.viewpager,fragment);
+                        transaction.commit();
+                    };break;
+                    case 3:{
+                        fragment =new fragment_thietbi();
+                        FragmentTransaction transaction =manager.beginTransaction();
+                        transaction.replace(R.id.viewpager,fragment);
+                        transaction.commit();
+                    };break;
+                    case 4:{
+                        fragment =new fragment_giohang();
+                        FragmentTransaction transaction =manager.beginTransaction();
+                        transaction.replace(R.id.viewpager,fragment);
+                        transaction.commit();
+                    };break;
+                    case 5:{
+                        fragment =new fragment_giohang();
+                        FragmentTransaction transaction =manager.beginTransaction();
+                        transaction.replace(R.id.viewpager,fragment);
+                        transaction.commit();
+                    };break;
+                }
             }
         });
     }
