@@ -1,157 +1,354 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_weight="1"
-    android:background="#FFFFFF">
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="69dp"
+        android:layout_height="69dp"
+        app:srcCompat="@drawable/combo" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        android:padding="15dp"
-        android:text="@string/c_i_t_th_m"
-        android:textColor="#000000"
-        android:textSize="20sp" />
+        android:layout_height="1dp"
+        android:layout_marginTop="69dp"
+        android:background="#bdb4b4" />
 
-    <TextView
-        android:id="@+id/textView2"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:textSize="20sp"
-        android:layout_height="wrap_content"
+        android:layout_height="71dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="5dp"
-        android:text="@string/l_a_ch_n_gi"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000000"
-        android:layout_marginStart="5dp" />
+        android:layout_below="@+id/imageView3"
+        android:orientation="horizontal">
 
-    <RadioGroup
-        android:id="@+id/radioGroup_character"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView2">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:drawable/sym_action_chat" />
 
-        <RadioButton
-            android:id="@+id/radioButton_male"
-            android:layout_width="wrap_content"
-            android:layout_height="35dp"
-            android:checked="true"
-            android:text="@string/th_p_n_cao"
+        <TextView
+            android:id="@+id/tinnhan"
+            android:layout_width="334dp"
+            android:layout_height="70dp"
+            android:textSize="20sp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical"
+            android:text="Tin nhắn"
             android:textColor="#000000" />
-
-        <RadioButton
-            android:id="@+id/radioButton_female"
-            android:layout_width="wrap_content"
-            android:layout_height="34dp"
-            android:checked="false"
-            android:text="@string/cao_xu_ng_th_p"
-            android:textColor="#000000" />
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/thongtinapp"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/radioGroup_character"
-        android:gravity="left"
-        android:text="@string/th_ng_tin_ph_n_m_m"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000000" />
-
-    <Button
-        android:id="@+id/danhgiaapp"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/thongtinapp"
-        android:gravity="left"
-        android:text="@string/nh_gi_x_p_h_ng_ng_d_ng"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000000"
-        android:layout_alignParentLeft="true" />
-
-    <Button
-        android:id="@+id/chiaseapp"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/danhgiaapp"
-        android:gravity="left"
-        android:text="@string/chia_s_ng_d_ng_t_i_b_n_b"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000000"
-        android:layout_alignParentLeft="true" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/chiaseapp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_alignParentLeft="true">
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="29dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="70dp"
+            android:background="#bdb4b4" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="141dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginLeft="5dp"
-            android:text="@string/g_i_email_ph_n_h_i_t_i_admin"
+            android:layout_marginTop="15dp"
+            android:background="@android:drawable/ic_menu_agenda" />
+
+        <TextView
+            android:id="@+id/donhangcuatoi"
+            android:layout_width="334dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical"
+            android:text="Đơn hàng của tôi"
             android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="70dp"
+            android:background="#bdb4b4" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="212dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:drawable/ic_menu_set_as" />
+
+        <TextView
+            android:id="@+id/nhanxet"
+            android:layout_width="334dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical"
+            android:text="Nhận xét của tôi"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="70dp"
+            android:background="#bdb4b4" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="283dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:drawable/btn_star_big_off" />
+
+        <TextView
+            android:id="@+id/danhgia"
+            android:layout_width="334dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical"
+            android:text="Đánh giá ứng dụng"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="70dp"
+            android:background="#bdb4b4" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="71dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="354dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:drawable/ic_menu_share" />
+
+        <TextView
+            android:id="@+id/chiase"
+            android:layout_width="334dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical"
+            android:text="Chia sẻ cho bạn bè"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="70dp"
+            android:background="#bdb4b4" />
+    </RelativeLayout>
+</RelativeLayout>
+
+    <!--
+    <?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="@string/c_i_t_th_m"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
             android:textSize="20sp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="5dp"
+            android:text="@string/l_a_ch_n_gi"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000"
             android:layout_marginStart="5dp" />
 
-        <EditText
-            android:id="@+id/edttenkhachhang"
+        <RadioGroup
+            android:id="@+id/radioGroup_character"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/h_t_n_ng_i_g_i" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView2">
 
-        <EditText
-            android:id="@+id/edttieude"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/ti_u" />
+            <RadioButton
+                android:id="@+id/radioButton_male"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:checked="true"
+                android:text="@string/th_p_n_cao"
+                android:textColor="#000000" />
 
-        <EditText
-            android:id="@+id/edtnoidung"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/n_i_dung_c_n_g_i" />
+            <RadioButton
+                android:id="@+id/radioButton_female"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:checked="false"
+                android:text="@string/cao_xu_ng_th_p"
+                android:textColor="#000000" />
+        </RadioGroup>
 
         <Button
-            android:id="@+id/btnsendemail"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:text="@string/g_i_email" />
+            android:id="@+id/thongtinapp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/radioGroup_character"
+            android:gravity="left"
+            android:text="@string/th_ng_tin_ph_n_m_m"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/danhgiaapp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/thongtinapp"
+            android:gravity="left"
+            android:text="@string/nh_gi_x_p_h_ng_ng_d_ng"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000"
+            android:layout_alignParentLeft="true" />
 
-    <Button
-        android:id="@+id/button_save"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/xong"
-        android:textColor="#000000" />
+        <Button
+            android:id="@+id/chiaseapp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/danhgiaapp"
+            android:gravity="left"
+            android:text="@string/chia_s_ng_d_ng_t_i_b_n_b"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#000000"
+            android:layout_alignParentLeft="true" />
 
-</RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/chiaseapp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_alignParentLeft="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="29dp"
+                android:layout_marginLeft="5dp"
+                android:text="@string/g_i_email_ph_n_h_i_t_i_admin"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:layout_marginStart="5dp" />
+
+            <EditText
+                android:id="@+id/edttenkhachhang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/h_t_n_ng_i_g_i" />
+
+            <EditText
+                android:id="@+id/edttieude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/ti_u" />
+
+            <EditText
+                android:id="@+id/edtnoidung"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/n_i_dung_c_n_g_i" />
+
+            <Button
+                android:id="@+id/btnsendemail"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:text="@string/g_i_email" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_save"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/xong"
+            android:textColor="#000000" />
+
+    </RelativeLayout>
+    -->

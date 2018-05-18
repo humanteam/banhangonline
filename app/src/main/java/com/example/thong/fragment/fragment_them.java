@@ -25,17 +25,58 @@ import android.widget.TextView;
 import com.example.thong.banhangonline.R;
 
 public class fragment_them extends Fragment {
-    Button btnshare;
-    Button btndanhgia;
+    TextView txttinnhan, txtdonhang, txtnhanxet, txtshare, txtdanhgia;
+
     @Nullable
     @Override
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_them, container, false);
 
+        txttinnhan = (TextView) view.findViewById(R.id.tinnhan);
+        txttinnhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            //bắt sự kiện vào đây
+            }
+        });
 
-        btnshare = (Button) view.findViewById(R.id.chiaseapp);
-        btnshare.setOnClickListener(new View.OnClickListener() {
+        txtdonhang = (TextView) view.findViewById(R.id.donhangcuatoi);
+        txtdonhang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //bắt sự kiện vào đây
+            }
+        });
+
+        txtnhanxet = (TextView) view.findViewById(R.id.nhanxet);
+        txtnhanxet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //bắt sự kiện vào đây
+                FragmentManager manager = getActivity().getFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.replace(R.id.viewpager, new fragment_nhanxet());
+                transaction.addToBackStack("m1");
+                transaction.commit();
+            }
+        });
+
+        txtdanhgia = (TextView) view.findViewById(R.id.danhgia);
+        txtdanhgia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // ((AppCompatActivity) getActivity()).getSupportActionBar();
+                FragmentManager manager = getActivity().getFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.replace(R.id.viewpager, new fragment_danhgia());
+                transaction.addToBackStack("m1");
+                transaction.commit();
+            }
+        });
+
+        txtshare = (TextView) view.findViewById(R.id.chiase);
+        txtshare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String linkApp = "https://play.google.com/store/apps/details?id=" + getActivity().getPackageName();
@@ -43,19 +84,6 @@ public class fragment_them extends Fragment {
                 intenShare.setType("text/plain");
                 intenShare.putExtra(Intent.EXTRA_TEXT, linkApp);
                 startActivity(Intent.createChooser(intenShare, "Chia sẻ app với bạn bè của bạn"));
-            }
-        });
-
-        btndanhgia = (Button) view.findViewById(R.id.danhgiaapp);
-        btndanhgia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Thông Tin App");
-                FragmentManager manager =getActivity().getFragmentManager();
-                FragmentTransaction transaction=manager.beginTransaction();
-                transaction.replace(R.id.viewpager,new fragment_danhgia());
-                transaction.addToBackStack("m2");
-                transaction.commit();
             }
         });
         return view;
