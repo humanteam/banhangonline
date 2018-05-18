@@ -25,13 +25,14 @@ import android.widget.TextView;
 import com.example.thong.banhangonline.R;
 
 public class fragment_them extends Fragment {
+    View view;
     Button btnshare;
     Button btndanhgia;
     @Nullable
     @Override
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_them, container, false);
+        view = inflater.inflate(R.layout.fragment_them, container, false);
 
 
         btnshare = (Button) view.findViewById(R.id.chiaseapp);
@@ -59,5 +60,21 @@ public class fragment_them extends Fragment {
             }
         });
         return view;
+    }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser){
+
+        }
+        else {
+            view.clearFocus();
+        }
+    }
+    @Override
+    public void onDestroyView() {
+        view.clearFocus();
+        view.clearAnimation();
+        super.onDestroyView();
     }
 }
