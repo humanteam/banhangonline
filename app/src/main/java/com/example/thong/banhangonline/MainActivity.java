@@ -4,24 +4,17 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.graphics.Color;
-import android.os.Debug;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
-
 import com.example.thong.fragment.fragment_them;
 import com.example.thong.fragment.fragment_thietbi;
 import com.example.thong.fragment.fragment_giohang;
 import com.example.thong.fragment.fragment_home;
 import com.example.thong.fragment.fragment_mypham;
-import com.example.thong.fragment.fragment_thietbi;
 import com.example.thong.fragment.fragment_toc;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import devlight.io.library.ntb.NavigationTabBar;
 
@@ -29,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     FragmentManager manager =getFragmentManager();
     NavigationTabBar navigationTabBar;
-    Fragment fragment =null;
     ArrayList<NavigationTabBar.Model> listmodel =new ArrayList<>();
     HashMap<String,Fragment>listFragment =new HashMap<>();
 
@@ -131,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             Log.e("fragment","Không tồn tại fragment");
-            transaction.addToBackStack(tag);
             transaction.replace(R.id.viewpager,fragment);
             transaction.commit();
         }
