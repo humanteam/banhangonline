@@ -10,10 +10,27 @@ import android.view.ViewGroup;
 import com.example.thong.banhangonline.R;
 
 public class fragment_thietbi extends Fragment{
+    View view;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_dientu,container,false);
+        view =inflater.inflate(R.layout.fragment_dientu,container,false);
         return view;
+    }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser){
+
+        }
+        else {
+            view.clearFocus();
+        }
+    }
+    @Override
+    public void onDestroyView() {
+        view.clearFocus();
+        view.clearAnimation();
+        super.onDestroyView();
     }
 }

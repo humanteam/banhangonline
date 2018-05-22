@@ -1,6 +1,7 @@
 package com.example.thong.fragment;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thong.banhangonline.R;
@@ -18,13 +20,24 @@ import com.example.thong.banhangonline.R;
 
 public class fragment_nhanxet extends Fragment implements View.OnClickListener {
 
-    Button btn;
+    Button btnclickxong;
     private View mview1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mview1 = inflater.inflate(R.layout.fragment_nhanxetkhachhang, container, false);
         getUiInitiazalization(mview1);
+        btnclickxong = (Button)mview1.findViewById(R.id.btnclickxong);
+        btnclickxong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getActivity().getFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.replace(R.id.viewpager, new fragment_them());
+                transaction.addToBackStack("m2");
+                transaction.commit();
+            }
+        });
         return mview1;
     }
 

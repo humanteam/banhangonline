@@ -29,10 +29,10 @@
             android:layout_height="40dp"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="15dp"
-            android:background="@android:drawable/sym_action_chat" />
+            android:background="@android:drawable/ic_menu_set_as" />
 
         <TextView
-            android:id="@+id/tinnhan"
+            android:id="@+id/website"
             android:layout_width="334dp"
             android:layout_height="70dp"
             android:textSize="20sp"
@@ -40,7 +40,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:gravity="center_vertical"
-            android:text="Tin nhắn"
+            android:text="Liên kết Website"
             android:textColor="#000000" />
 
         <TextView
@@ -67,14 +67,14 @@
             android:background="@android:drawable/ic_menu_agenda" />
 
         <TextView
-            android:id="@+id/donhangcuatoi"
+            android:id="@+id/thongtincuahang"
             android:layout_width="334dp"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:gravity="center_vertical"
-            android:text="Đơn hàng của tôi"
+            android:text="Thông tin địa điểm bán hàng"
             android:textColor="#000000"
             android:textSize="20sp" />
 
@@ -102,7 +102,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="15dp"
-            android:background="@android:drawable/ic_menu_set_as" />
+            android:background="@android:drawable/sym_action_chat" />
 
         <TextView
             android:id="@+id/nhanxet"
@@ -112,7 +112,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:gravity="center_vertical"
-            android:text="Nhận xét của tôi"
+            android:text="Nhận xét của bạn"
             android:textColor="#000000"
             android:textSize="20sp" />
 
@@ -137,7 +137,7 @@
             android:layout_height="40dp"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="15dp"
-            android:background="@android:drawable/btn_star_big_off" />
+            android:background="@android:drawable/star_off" />
 
         <TextView
             android:id="@+id/danhgia"

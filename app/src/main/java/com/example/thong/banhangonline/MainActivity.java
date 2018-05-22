@@ -4,11 +4,15 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.graphics.Color;
+import android.os.Debug;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+
 import android.widget.Toast;
 
 import com.example.thong.fragment.fragment_them;
@@ -20,14 +24,19 @@ import com.example.thong.fragment.fragment_thietbi;
 import com.example.thong.fragment.fragment_toc;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import devlight.io.library.ntb.NavigationTabBar;
 
 public class MainActivity extends AppCompatActivity {
 
+    FragmentManager manager =getFragmentManager();
     NavigationTabBar navigationTabBar;
     Fragment fragment =null;
     ArrayList<NavigationTabBar.Model> listmodel =new ArrayList<>();
+    HashMap<String,Fragment>listFragment =new HashMap<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,17 +51,28 @@ public class MainActivity extends AppCompatActivity {
                         | View.SYSTEM_UI_FLAG_IMMERSIVE);
         setContentView(R.layout.activity_main);
 
+
         fragment =new fragment_home();
         FragmentManager manager =getFragmentManager();
         FragmentTransaction transaction =manager.beginTransaction();
         transaction.replace(R.id.viewpager,fragment);
         transaction.commit();
+
         addData();
+        changeFragment(listFragment.get("home"),manager,"home",0);
         addControlls();
         addEvent();
     }
 
     private void addData() {
+
+        listFragment.put("home",new fragment_home());
+        listFragment.put("mypham",new fragment_mypham());
+        listFragment.put("toc",new fragment_toc());
+        listFragment.put("thietbi",new fragment_thietbi());
+        listFragment.put("giohang",new fragment_giohang());
+        listFragment.put("them",new fragment_them());
+
         listmodel.add(new NavigationTabBar.Model
                 .Builder(getResources().getDrawable(R.drawable.home)
                 ,Color.WHITE).title("Home")
@@ -93,8 +113,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addEvent() {
-        final FragmentManager manager=getFragmentManager();
-
         navigationTabBar.setOnTabBarSelectedIndexListener(new NavigationTabBar.OnTabBarSelectedIndexListener() {
             @Override
             public void onStartTabSelected(NavigationTabBar.Model model, int index) {
@@ -104,44 +122,48 @@ public class MainActivity extends AppCompatActivity {
             public void onEndTabSelected(NavigationTabBar.Model model, int index) {
                 switch (index){
                     case 0: {
-
-                        fragment =new fragment_home();
-                        FragmentTransaction transaction =manager.beginTransaction();
-                        transaction.replace(R.id.viewpager,fragment);
-                        transaction.commit();
+                     changeFragment(listFragment.get("home"),manager,"home",0);
                     }break;
                     case 1:{
-                        fragment =new fragment_mypham();
-                        FragmentTransaction transaction =manager.beginTransaction();
-                        transaction.replace(R.id.viewpager,fragment);
-                        transaction.commit();
+                        changeFragment(listFragment.get("mypham"),manager,"mypham",1);
                     };break;
                     case 2:{
-                        fragment =new fragment_toc();
-                        FragmentTransaction transaction =manager.beginTransaction();
-                        transaction.replace(R.id.viewpager,fragment);
-                        transaction.commit();
+                      changeFragment(listFragment.get("toc"),manager,"toc",2);
                     };break;
                     case 3:{
-                        fragment =new fragment_thietbi();
-                        FragmentTransaction transaction =manager.beginTransaction();
-                        transaction.replace(R.id.viewpager,fragment);
-                        transaction.commit();
+                        changeFragment(listFragment.get("thietbi"),manager,"thietbi",3);
                     };break;
                     case 4:{
-                        fragment =new fragment_giohang();
-                        FragmentTransaction transaction =manager.beginTransaction();
-                        transaction.replace(R.id.viewpager,fragment);
-                        transaction.commit();
+                        changeFragment(listFragment.get("giohang"),manager,"giohang",4);
                     };break;
                     case 5:{
-                        fragment =new fragment_them();
-                        FragmentTransaction transaction =manager.beginTransaction();
-                        transaction.replace(R.id.viewpager,fragment);
-                        transaction.commit();
+                        changeFragment(listFragment.get("them"),manager,"them",5);
                     };break;
                 }
             }
         });
+    }
+    void changeFragment(Fragment fragment,FragmentManager manager,String tag,int id){
+        FragmentTransaction transaction =manager.beginTransaction();
+        Fragment bridge =getFragmentManager().findFragmentByTag(tag);
+        if(bridge!=null){
+            getFragmentManager().popBackStack(tag,id);
+        }
+        else {
+            Log.e("fragment","Không tồn tại fragment");
+            transaction.addToBackStack(tag);
+            transaction.replace(R.id.viewpager,fragment);
+            transaction.commit();
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(getFragmentManager().getBackStackEntryCount()>0){
+            getFragmentManager().popBackStack();
+        }
+        else{
+            super.onBackPressed();
+        }
     }
 }
