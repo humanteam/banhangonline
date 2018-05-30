@@ -1,16 +1,16 @@
 package com.example.thong.fragment;
 
-        import android.app.Fragment;
-        import android.os.Bundle;
-        import android.support.annotation.Nullable;
-        import android.util.Log;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.webkit.WebView;
-        import android.webkit.WebViewClient;
+import android.app.Fragment;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
-        import com.example.thong.banhangonline.R;
+import com.example.thong.banhangonline.R;
 
 public class fragment_lienketwebsite extends Fragment {
 

@@ -63,11 +63,13 @@ public class fragment_them extends Fragment {
             @Override
             public void onClick(View v) {
 
+
                 FragmentManager manager =getFragmentManager();
                 FragmentTransaction transaction =manager.beginTransaction();
                 transaction.addToBackStack("m3");
                 transaction.replace(R.id.viewpager,new fragment_danhgia());
                 transaction.commit();
+
             }
         });
 
@@ -96,8 +98,8 @@ public class fragment_them extends Fragment {
     }
     @Override
     public void onDestroyView() {
+        super.onDestroyView();
         view.clearFocus();
         view.clearAnimation();
-        super.onDestroyView();
     }
 }
