@@ -3,7 +3,9 @@ package com.example.thong.banhangonline;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -36,12 +38,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        fragment =new fragment_home();
-        FragmentManager manager =getFragmentManager();
-        FragmentTransaction transaction =manager.beginTransaction();
-        transaction.replace(R.id.viewpager,fragment);
-        transaction.commit();
 
         addData();
         changeFragment(listFragment.get("home"),manager,"home",0);
@@ -147,7 +143,20 @@ public class MainActivity extends AppCompatActivity {
             getFragmentManager().popBackStack();
         }
         else{
-            super.onBackPressed();
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Thoát Ứng Dụng")
+                    .setMessage("Bạn có muốn thoát ứng dụng không ?")
+                    .setPositiveButton("Có", new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+
+                    })
+                    .setNegativeButton("Không", null)
+                    .show();
         }
     }
 }

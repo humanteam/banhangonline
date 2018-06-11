@@ -11,18 +11,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.thong.Dialog.DieuKhoanVaBanQuyen;
 import com.example.thong.banhangonline.R;
 
 public class fragment_them extends Fragment {
     View view;
 
-    TextView txtwebsite, txtcuahang, txtnhanxet, txtshare, txtdanhgia;
+    TextView txtwebsite, txtcuahang, txtnhanxet, txtshare, txtdieukiensudung ;
 
     @Nullable
     @Override
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_them, container, false);
+        txtdieukiensudung =(TextView)view.findViewById(R.id.bqvdk);
+        txtdieukiensudung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //bắt sự kiện vào đây
+                DieuKhoanVaBanQuyen dk = new DieuKhoanVaBanQuyen(getActivity());
+                dk.show();
+            }
+        });
 
         txtwebsite = (TextView) view.findViewById(R.id.website);
         txtwebsite.setOnClickListener(new View.OnClickListener() {
@@ -58,22 +68,7 @@ public class fragment_them extends Fragment {
             }
         });
 
-        txtdanhgia = (TextView) view.findViewById(R.id.danhgia);
-        txtdanhgia.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                FragmentManager manager =getFragmentManager();
-                FragmentTransaction transaction =manager.beginTransaction();
-                transaction.addToBackStack("m3");
-                transaction.replace(R.id.viewpager,new fragment_danhgia());
-                transaction.commit();
-
-            }
-        });
-
-        txtshare = (TextView) view.findViewById(R.id.chiase);
+         txtshare = (TextView) view.findViewById(R.id.chiase);
         txtshare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

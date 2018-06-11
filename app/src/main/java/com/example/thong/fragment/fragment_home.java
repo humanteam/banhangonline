@@ -70,7 +70,7 @@ public class fragment_home extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void addControlls() {
         list=view.findViewById(R.id.list_home);
-        LinearLayoutManager manager =new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager manager =new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         list.setLayoutManager(manager);
         adapter=new Adapter_Hone(dssp);
         list.setAdapter(adapter);

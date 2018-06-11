@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dieukhoan">
+
+    <Button
+        android:id="@+id/dongy"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="1"
+        android:layout_marginBottom="5dp"
+        android:background="#d68282"
+        android:padding="5dp"
+        android:text="Đồng ý"
+        android:textColor="#000000" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:text="Điều Khoản Sử Dụng"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:gravity="center"
+        android:layout_marginTop="25dp"
+        android:background="#000000"/>
+
+    <TextView
+        android:id="@+id/txtdieukhoan"
+        android:layout_width="match_parent"
+        android:layout_height="499dp"
+        android:textSize="17sp"
+        android:padding="5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="26dp"
+        android:layout_weight="1"
+        android:text="Chúng tôi thực hiện việc thu thập thông tin của khách hàng nhằm mục đích:\n
+• Thực hiện việc giao dịch và thanh toán trực tuyến.\n
+• Thực hiện hỗ trợ và chăm sóc khách hàng trước, trong và sau khi sử dụng sản phẩm.\n
+• Giải đáp thắc mắc của khách hàng.\n
+• Cung cấp những thông tin mới nhất trên ứng dụng.\n
+• Thực hiện hoạt động khảo sát khách hàng.\n
+• Thực hiện các hoạt động quảng bá sản phẩm và giới thiệu những chương trình khuyến mãi.\n
+• Giải quyết các vấn đề, tranh chấp phát sinh liên quan đến việc sử dụng ứng dụng."
+        android:textColor="#000000" />
+</RelativeLayout>

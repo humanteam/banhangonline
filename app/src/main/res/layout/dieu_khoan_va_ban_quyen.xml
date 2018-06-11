@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dieukhoan">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:text="Bản Quyền Và Điều Kiện Sử Dụng"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:gravity="center"
+        android:layout_marginTop="25dp"
+        android:background="#000000"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:scrollbars="vertical"
+        android:fillViewport="true">
+    <TextView
+        android:id="@+id/txtdieukhoan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:padding="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="26dp"
+        android:text="I. Bản quyền nội dung bài viết và sản phẩm\n\n- Tất cả các bài viết, sản phẩm trên ứng dụng đều hoàn toàn thuộc quyền sở hữu của nhà phát hành.\n
+- Thông tin những bài viết, sản phẩm... trên ứng dụng chỉ mang tính chất cho người dùng tham khảo thêm trước khi quyết định mua sản phẩm, nhằm cung cấp thêm kiến thức và hướng dẫn chung cho quý khách hàng.\n
+- Những ý kiến hay quan điểm trong các bài viết luôn hướng đến việc cung cấp những thông tin chính xác và trung thực theo sự nghiên cứu của chuyên gia và tổng hợp từ các nguồn tham khảo khác nhau.\n
+- Các nội dung của sản phẩm ghi lại những kiến thức và cách sử dụng cho quý khách tham khảo. Nội dung bài viết có thể được thay đổi hoặc chỉnh sửa mà không báo trước.\n
+- Không nội dung nào trong các bài viết là có chủ ý phân biệt hay làm tổn hại đến các vùng miền, nhóm giới tính, công ty, tổ chức hay cá nhân nào.\n\nII. Điều kiện sử dụng\n\n
+- Bạn được tự do sử dụng thông tin đăng trên ứng dụng cho mục đích cá nhân (tham khảo, học tập, sưu tầm,…)\n
+- Nếu bạn phát hành lại thông tin đăng trên ứng dụng dưới hình thức miễn phí (phổ biến, đăng lại trên các ứng dụng hay trang web khác …), bạn phải ghi rõ: ”Nguồn:Ứng dụng bán hàng online” hoặc tên của Tác giả (nếu có) theo Quy định về Bản quyền được ghi bên trên.\n
+- Nếu bạn phát hành lại thông tin đăng trên ứng dụng dưới bất cứ hình thức có thu phí, kinh doanh hoặc xuất bản thành sách, báo, tạp chí … bạn phải được sự đồng ý của nhà phát hành hoặc của Tác giả (nếu có).\n
+- Các thông tin trên ứng dụng đều được chọn lọc và biên soạn kỹ, tuy nhiên do nhiều nguyên nhân khách quan nên có thể có những thông tin chưa được chính xác và hoàn chỉnh lắm, bạn phải kiểm tra lại trước khi đưa vào sử dụng dưới mọi hình thức.\n
+- Nhà phát hành sẽ không chịu bất cứ trách nhiệm nào về các thông tin được đăng trên ứng dụng.\n
+Lưu ý: Các điều kiện này có thể được sửa đổi, bổ sung bất cứ lúc nào mà không cần phải báo trước và có hiệu lực ngay khi được thay đổi.\n\n"
+        android:textColor="#000000"
+        android:textSize="17sp" />
+    </ScrollView>
+</RelativeLayout>
