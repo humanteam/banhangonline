@@ -51,7 +51,7 @@ public class Adapter_Hone extends RecyclerView.Adapter<Adapter_Hone.ViewHolder> 
             img=itemView.findViewById(R.id.imganhsp);
             txtten=itemView.findViewById(R.id.tvTitle);
             txtchitiet=itemView.findViewById(R.id.tvContent);
-            txtgia=itemView.findViewById(R.id.tvReadmore);
+            txtgia=itemView.findViewById(R.id.btngia);
 
         }
     }

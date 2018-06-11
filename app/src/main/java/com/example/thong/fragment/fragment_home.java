@@ -8,10 +8,12 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -46,7 +48,6 @@ public class fragment_home extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
          view =inflater.inflate(R.layout.fragment_home,container,false);
-         Loaddata();
          addControlls();
          addEvents();
         return view;
@@ -74,6 +75,7 @@ public class fragment_home extends Fragment {
         list.setLayoutManager(manager);
         adapter=new Adapter_Hone(dssp);
         list.setAdapter(adapter);
+        Volley.newRequestQueue(getActivity()).add(request);
     }
 
     @Override
@@ -92,8 +94,6 @@ public class fragment_home extends Fragment {
         view.clearAnimation();
         super.onDestroyView();
     }
-
-    void Loaddata(){
         JsonArrayRequest request =new JsonArrayRequest(APIs.api_home, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -114,13 +114,12 @@ public class fragment_home extends Fragment {
               }
               lastpositon+=5;
               adapter.notifyDataSetChanged();
+                Log.e("data_lenght",dssp.size()+"");
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
             }
         });
-    }
-
 }
