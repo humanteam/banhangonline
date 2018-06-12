@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -17,9 +20,7 @@ import com.example.thong.banhangonline.R;
 
 public class fragment_them extends Fragment {
     View view;
-
     TextView txtwebsite, txtcuahang, txtnhanxet, txtshare, txtdieukiensudung,txthuongdansudung ;
-
     @Nullable
     @Override
 
@@ -29,7 +30,6 @@ public class fragment_them extends Fragment {
         txtdieukiensudung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //bắt sự kiện vào đây
                 DieuKhoanVaBanQuyen dk = new DieuKhoanVaBanQuyen(getActivity());
                 dk.show();
             }
@@ -39,7 +39,6 @@ public class fragment_them extends Fragment {
         txtwebsite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            //bắt sự kiện vào đây
                 FragmentManager manager = getActivity().getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 transaction.replace(R.id.viewpager, new fragment_lienketwebsite());
@@ -60,7 +59,6 @@ public class fragment_them extends Fragment {
         txtnhanxet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //bắt sự kiện vào đây
                 FragmentManager manager = getActivity().getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 transaction.replace(R.id.viewpager, new fragment_nhanxet());
@@ -90,6 +88,7 @@ public class fragment_them extends Fragment {
         });
         return view;
     }
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);

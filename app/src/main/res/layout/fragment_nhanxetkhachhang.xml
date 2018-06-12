@@ -52,10 +52,16 @@
             android:text="Gửi Email" />
 
     </LinearLayout>
-
-    <LinearLayout
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:textColor="#000"
+        android:id="@+id/gn"
+        android:layout_below="@+id/ln1"/>
+<!--    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/gn"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -101,7 +107,7 @@
             android:textColor="#ffffff"
             android:textSize="18sp" />
 
-    </LinearLayout>
+    </LinearLayout>-->
 
     <Button
         android:id="@+id/btnclickxong"
