@@ -8,23 +8,22 @@
     <LinearLayout
         android:id="@+id/ln1"
         android:layout_width="match_parent"
-        android:layout_height="201dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="50dp"
         android:background="#ab9494"
         android:gravity="center"
         android:orientation="vertical">
-
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Họ tên người gửi"
             android:inputType="textPersonName"
             android:text=""
-            android:hint="Họ tên người gửi"
             android:textColor="#000000" />
 
         <EditText
@@ -41,28 +40,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
             android:hint="Nội dung gửi"
+            android:inputType="textPersonName"
             android:textColor="#000000" />
 
         <Button
             android:id="@+id/btnsendemail"
             android:layout_width="120dp"
             android:layout_height="50dp"
+            android:padding="5dp"
             android:text="Gửi Email" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="156dp"
+        android:layout_marginBottom="184dp"
         android:background="#ab9494"
         android:gravity="center"
-        android:orientation="vertical"
-        android:layout_alignParentLeft="true">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
@@ -72,7 +72,7 @@
             android:gravity="center"
             android:text="Nhóm Phát Triển Ứng Dụng"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -81,7 +81,7 @@
             android:gravity="center"
             android:text="Trương Nho Thông : 0964118267"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -90,28 +90,28 @@
             android:gravity="center"
             android:text="Nguyễn Thành Công : 01632211771"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:layout_marginBottom="40dp"
             android:layout_marginTop="2dp"
             android:gravity="center"
             android:text="Chu Trí Tú : 0903484596"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 
     <Button
         android:id="@+id/btnclickxong"
         android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:background="#ab9494"
-        android:padding="10dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="67dp"
+        android:layout_marginBottom="15dp"
+        android:contentDescription="AboutUs"
+        android:padding="5dp"
         android:text="Xong" />
+
 </RelativeLayout>

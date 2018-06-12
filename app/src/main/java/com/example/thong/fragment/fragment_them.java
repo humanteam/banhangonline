@@ -12,12 +12,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.thong.Dialog.DieuKhoanVaBanQuyen;
+import com.example.thong.Dialog.HuongDanSuDung;
 import com.example.thong.banhangonline.R;
 
 public class fragment_them extends Fragment {
     View view;
 
-    TextView txtwebsite, txtcuahang, txtnhanxet, txtshare, txtdieukiensudung ;
+    TextView txtwebsite, txtcuahang, txtnhanxet, txtshare, txtdieukiensudung,txthuongdansudung ;
 
     @Nullable
     @Override
@@ -68,7 +69,7 @@ public class fragment_them extends Fragment {
             }
         });
 
-         txtshare = (TextView) view.findViewById(R.id.chiase);
+        txtshare = (TextView) view.findViewById(R.id.chiase);
         txtshare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +78,14 @@ public class fragment_them extends Fragment {
                 intenShare.setType("text/plain");
                 intenShare.putExtra(Intent.EXTRA_TEXT, linkApp);
                 startActivity(Intent.createChooser(intenShare, "Chia sẻ app với bạn bè của bạn"));
+            }
+        });
+        txthuongdansudung = (TextView) view.findViewById(R.id.huongdansudung);
+        txthuongdansudung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HuongDanSuDung dk = new HuongDanSuDung(getActivity());
+                dk.show();
             }
         });
         return view;

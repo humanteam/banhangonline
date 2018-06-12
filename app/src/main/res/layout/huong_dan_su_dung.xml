@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dieukhoan">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:text="Hướng Dẫn Sử Dụng"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:gravity="center"
+        android:layout_marginTop="25dp"
+        android:background="#000000"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:scrollbars="vertical"
+        android:fillViewport="true">
+    <TextView
+        android:id="@+id/txtdieukhoan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:padding="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginStart="0dp"
+        android:text="1. Khi sử dụng ứng dụng nếu có sảy ra bất cứ một lỗi hệ thống nào xin quý khách vui lòng thông báo tới Admin bằng cách gửi nhận xét phản hồi của bạn tới Admin.\n\n 2. Khi có bất cứ thắc mắc hoặc muốn hỗ trợ trực tiếp có thể liên hệ thông qua đường dây nóng : 0982.53.68.53 , hoặc tới trực tiếp các địa điểm bán hàng trực tiếp để được giải đáp và hỗ trợ kịp thời. \n\n 3. Đối với việc mua hàng, khi bạn chưa có đủ kinh tế bạn có thể thêm vào giỏ hàng sản phẩm mình yêu thích, giỏ hàng sẽ lưu lại sản phẩm đó cho tới khi nào bạn quay lại và tiến hành đặt mua sản phẩm đó. \n\n 4. Khi lựa chọn sản phẩm mua, bạn nên đọc kỹ thông tin sản phẩm, công dụng, ... của sản phẩm trước khi mua. \n\n 5. Tất cả những sản phẩm bạn đã mua, bạn chỉ phải thanh toán khi nhận được sản phẩm, kiểm tra đúng, đủ số lượng, cũng như là đảm bảo chất lượng của sản phẩm (có Tem, nhãn mác, mã vạch đầy đủ và rõ ràng). \n\n 6. Tùy vào từng vùng miền, các tỉnh khách nhau, thời gian chuyển phát sản phẩm bạn đã đặt sẽ khác nhau. Muộn nhất sẽ là 5 ngày kể từ ngày bạn đặt mua sản phẩm trên ứng dụng. \n\n 7. Khi có vấn đề phát sinh từ đơn hàng bạn đã đặt mua, hãy liên hệ trực tiếp với người trước đó đã gọi điện xác nhận đơn hàng với bạn. \n\n 8. Đừng quên chia sẻ ứng dụng tới cho bạn bè và người thân của bạn để cùng sử dụng những sản phẩm tuyệt vời."
+        android:textColor="#000000"
+        android:textSize="17sp" />
+    </ScrollView>
+</RelativeLayout>
