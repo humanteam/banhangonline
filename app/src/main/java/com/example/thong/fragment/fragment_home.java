@@ -63,6 +63,7 @@ public class fragment_home extends Fragment {
          @Override
          public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
              super.onScrolled(recyclerView, dx, dy);
+             
          }
      });
     }
@@ -71,11 +72,11 @@ public class fragment_home extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void addControlls() {
         list=view.findViewById(R.id.list_home);
-        LinearLayoutManager manager =new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager manager =new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         list.setLayoutManager(manager);
         adapter=new Adapter_Hone(dssp);
         list.setAdapter(adapter);
-        Volley.newRequestQueue(getContext()).add(request);
+        Volley.newRequestQueue(getActivity()).add(request);
     }
 
     @Override
@@ -97,7 +98,7 @@ public class fragment_home extends Fragment {
         JsonArrayRequest request =new JsonArrayRequest(APIs.api_home, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-              for(int i=lastpositon;i<lastpositon+5 && i<response.length();i++){
+              for(int i=lastpositon;i<lastpositon+8 && i<response.length();i++){
                   try {
                       JSONObject obj =response.getJSONObject(i);
                       SanPham sp =new SanPham();
@@ -112,7 +113,7 @@ public class fragment_home extends Fragment {
                       e.printStackTrace();
                   }
               }
-              lastpositon+=5;
+              lastpositon+=8;
               adapter.notifyDataSetChanged();
                 Log.e("data_lenght",dssp.size()+"");
             }

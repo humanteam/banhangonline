@@ -3,10 +3,19 @@ package com.example.thong.banhangonline;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
+
+import android.widget.Toast;
+
+
 import com.example.thong.fragment.fragment_them;
 import com.example.thong.fragment.fragment_thietbi;
 import com.example.thong.fragment.fragment_giohang;
@@ -29,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         addData();
         changeFragment(listFragment.get("home"),manager,"home",0);
         addControlls();
@@ -119,7 +129,6 @@ public class MainActivity extends AppCompatActivity {
         Fragment bridge =getFragmentManager().findFragmentByTag(tag);
         if(bridge!=null){
             getFragmentManager().popBackStack(tag,id);
-            Log.e("fragment","Tồn tại fragment");
         }
         else {
             Log.e("fragment","Không tồn tại fragment");
@@ -134,7 +143,20 @@ public class MainActivity extends AppCompatActivity {
             getFragmentManager().popBackStack();
         }
         else{
-            super.onBackPressed();
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Thoát Ứng Dụng")
+                    .setMessage("Bạn có muốn thoát ứng dụng không ?")
+                    .setPositiveButton("Có", new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+
+                    })
+                    .setNegativeButton("Không", null)
+                    .show();
         }
     }
 }

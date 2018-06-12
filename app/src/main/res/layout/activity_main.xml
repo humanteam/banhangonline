@@ -32,7 +32,7 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:ems="10"
-                    android:padding="15dp"
+                    android:padding="10dp"
                     android:hint="@string/nh_p_t_c_n_t_m_ki_m"
                     android:inputType="text"
                     android:textColor="#FFF"
