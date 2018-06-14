@@ -18,6 +18,7 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 
+import com.example.thong.APIs;
 import com.example.thong.fragment.fragment_them;
 import com.example.thong.fragment.fragment_thietbi;
 import com.example.thong.fragment.fragment_giohang;
@@ -32,6 +33,7 @@ import devlight.io.library.ntb.NavigationTabBar;
 
 public class MainActivity extends AppCompatActivity {
 
+    Database database;
     FragmentManager manager =getFragmentManager();
     NavigationTabBar navigationTabBar;
     ArrayList<NavigationTabBar.Model> listmodel =new ArrayList<>();
@@ -41,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        database =new Database(this, APIs.database_name,null,1);
+        database.create_TB_GioHang();
         addData();
         if(!checkinternet()){
             Toast.makeText(getApplicationContext(),"Please checked internet !",Toast.LENGTH_LONG).show();
@@ -53,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         addControlls();
         addEvent();
     }
-
     private void addData() {
         listFragment.put("home",new fragment_home());
         listFragment.put("mypham",new fragment_mypham());

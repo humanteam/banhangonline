@@ -5,10 +5,13 @@ import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
 
 public class Database extends SQLiteOpenHelper {
     public Database(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
+        Log.e("database","da tao thanh cong database");
     }
 
     public Database(Context context, String name, SQLiteDatabase.CursorFactory factory, int version, DatabaseErrorHandler errorHandler) {
@@ -31,5 +34,12 @@ public class Database extends SQLiteOpenHelper {
     public Cursor getData(String query){
         SQLiteDatabase database =getReadableDatabase();
         return database.rawQuery(query,null);
+    }
+    public void create_TB_GioHang(){
+        String sql ="CREATE TABLE IF NOT EXISTS GioHang (id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "MaSP INTEGER,TenSP NVARCHAR(200),Anh TEXT ,ChiTiet TEXT ,MaTheLoai INTEGER,Gia FLOAT,SoLuong INTEGER,ThanhTien               FLOAT,TrangThai INTEGER)";
+        SQLiteDatabase database =getWritableDatabase();
+        database.execSQL(sql);
+        Log.e("database","da tao table thanh cong");
     }
 }

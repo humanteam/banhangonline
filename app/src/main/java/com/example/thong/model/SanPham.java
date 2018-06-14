@@ -1,7 +1,7 @@
 package com.example.thong.model;
 
 public class SanPham {
-  private String masp,tensp,anh,chitiet,matheloai,gia;
+   String masp,tensp,anh,chitiet,matheloai,gia;
 
     public SanPham(String masp, String tensp, String anh, String chitiet, String matheloai, String gia) {
         this.masp = masp;
