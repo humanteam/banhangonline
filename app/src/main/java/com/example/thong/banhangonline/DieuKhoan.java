@@ -22,8 +22,6 @@ public class DieuKhoan extends AppCompatActivity {
         setContentView(R.layout.dieu_khoan);
         addControl();
         addEvent();
-
-
     }
 
     private void addControl() {

@@ -17,7 +17,7 @@
             android:id="@+id/RelativeLayout1"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#ab9494">
+            android:background="#d0bafc12">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -35,8 +35,8 @@
                     android:hint="@string/nh_p_t_c_n_t_m_ki_m"
                     android:inputType="text"
                     android:padding="10dp"
-                    android:textColor="#FFF"
-                    android:textColorHint="#FFF"
+                    android:textColor="#f0020202"
+                    android:textColorHint="#e0484444"
                     android:textSize="20sp"
                     android:visibility="visible" />
             </LinearLayout>
@@ -96,15 +96,15 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewpager"
-            app:ntb_active_color="#6e4747"
+            app:ntb_active_color="#cefa1739"
             app:ntb_animation_duration="200"
             app:ntb_badge_bg_color="#874242"
             app:ntb_badge_gravity="top"
             app:ntb_badge_position="right"
-            app:ntb_badge_title_color="#ffffffff"
-            app:ntb_bg_color="#ab9494"
+            app:ntb_badge_title_color="#cfec2727"
+            app:ntb_bg_color="#d0bafc12"
             app:ntb_corners_radius="2dp"
-            app:ntb_inactive_color="#ffffff"
+            app:ntb_inactive_color="#e08b8282"
             app:ntb_title_mode="all"
             app:ntb_titled="true" />
     </LinearLayout>

@@ -3,8 +3,10 @@ package com.example.thong.banhangonline;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,8 +32,6 @@ import devlight.io.library.ntb.NavigationTabBar;
 
 public class MainActivity extends AppCompatActivity {
 
-
-    Map<String,Boolean>_check=new HashMap<>();
     FragmentManager manager =getFragmentManager();
     NavigationTabBar navigationTabBar;
     ArrayList<NavigationTabBar.Model> listmodel =new ArrayList<>();
@@ -43,15 +43,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         addData();
-        changeFragment(listFragment.get("home"),manager,"home",0);
+        if(!checkinternet()){
+            Toast.makeText(getApplicationContext(),"Please checked internet !",Toast.LENGTH_LONG).show();
+        }
+        else {
+            changeFragment(listFragment.get("home"),manager,"home",0);
+        }
+
         addControlls();
         addEvent();
     }
 
     private void addData() {
-        _check.put("home",false);
-        _check.put("toc",false);
-        _check.put("dodien",false);
         listFragment.put("home",new fragment_home());
         listFragment.put("mypham",new fragment_mypham());
         listFragment.put("toc",new fragment_toc());
@@ -107,16 +110,35 @@ public class MainActivity extends AppCompatActivity {
             public void onEndTabSelected(NavigationTabBar.Model model, int index) {
                 switch (index){
                     case 0: {
+                        if(!checkinternet()){
+                            Toast.makeText(getApplicationContext(),"Please checked internet !",Toast.LENGTH_LONG).show();
+                        }else {
                             changeFragment(listFragment.get("home"),manager,"home",0);
+                        }
                     }break;
                     case 1:{
-                        changeFragment(listFragment.get("mypham"),manager,"mypham",1);
+                        if(!checkinternet()){
+                            Toast.makeText(getApplicationContext(),"Please checked internet !",Toast.LENGTH_LONG).show();
+                        }else {
+                            changeFragment(listFragment.get("mypham"),manager,"mypham",1);
+                        }
                     };break;
                     case 2:{
-                      changeFragment(listFragment.get("toc"),manager,"toc",2);
+                        if(!checkinternet()){
+                            Toast.makeText(getApplicationContext(),"Please checked internet !",Toast.LENGTH_LONG).show();
+                        }else{
+                            changeFragment(listFragment.get("toc"),manager,"toc",2);
+                        }
+
                     };break;
                     case 3:{
-                        changeFragment(listFragment.get("thietbi"),manager,"thietbi",3);
+                        if(!checkinternet()){
+                            Toast.makeText(getApplicationContext(),"Please checked internet !",Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            changeFragment(listFragment.get("thietbi"),manager,"thietbi",3);
+                        }
+
                     };break;
                     case 4:{
                         changeFragment(listFragment.get("giohang"),manager,"giohang",4);
@@ -162,5 +184,10 @@ public class MainActivity extends AppCompatActivity {
                     .setNegativeButton("Không", null)
                     .show();
         }
+    }
+
+    private boolean checkinternet(){
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
     }
 }
