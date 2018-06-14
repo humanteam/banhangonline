@@ -12,17 +12,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.android.volley.Request;
+import com.android.volley.AuthFailureError;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.thong.APIs;
-import com.example.thong.adapter.Adapter_Hone;
+import com.example.thong.adapter.Adapter_Home;
 import com.example.thong.banhangonline.R;
 import com.example.thong.model.SanPham;
 
@@ -31,15 +29,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-
-import static android.support.v7.widget.LinearLayoutManager.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class fragment_home extends Fragment {
 
     RecyclerView list;
-    Adapter_Hone adapter;
+    Adapter_Home adapter;
     ArrayList<SanPham>dssp =new ArrayList<>();
-    int min=0,max=5,lastpositon=0;
+    int lastpositon=0;
     boolean is_loading =false;
     View view;
     @TargetApi(Build.VERSION_CODES.M)
@@ -54,18 +52,6 @@ public class fragment_home extends Fragment {
     }
 
     private void addEvents(){
-     list.addOnScrollListener(new RecyclerView.OnScrollListener() {
-         @Override
-         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-             super.onScrollStateChanged(recyclerView, newState);
-         }
-
-         @Override
-         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-             super.onScrolled(recyclerView, dx, dy);
-             
-         }
-     });
     }
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -74,7 +60,7 @@ public class fragment_home extends Fragment {
         list=view.findViewById(R.id.list_home);
         LinearLayoutManager manager =new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         list.setLayoutManager(manager);
-        adapter=new Adapter_Hone(dssp);
+        adapter=new Adapter_Home(dssp);
         list.setAdapter(adapter);
         Volley.newRequestQueue(getActivity()).add(request);
     }
@@ -93,12 +79,16 @@ public class fragment_home extends Fragment {
     public void onDestroyView() {
         view.clearFocus();
         view.clearAnimation();
+        view=null;
+        Volley.newRequestQueue(getActivity()).cancelAll(request);
+        Log.e("delete","deletefragment home");
         super.onDestroyView();
     }
-        JsonArrayRequest request =new JsonArrayRequest(APIs.api_home, new Response.Listener<JSONArray>() {
+      public JsonArrayRequest request =new JsonArrayRequest(APIs.api_home, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-              for(int i=lastpositon;i<lastpositon+8 && i<response.length();i++){
+                dssp.clear();
+               for(int i=lastpositon;i<response.length();i++){
                   try {
                       JSONObject obj =response.getJSONObject(i);
                       SanPham sp =new SanPham();
@@ -113,14 +103,26 @@ public class fragment_home extends Fragment {
                       e.printStackTrace();
                   }
               }
-              lastpositon+=8;
               adapter.notifyDataSetChanged();
-                Log.e("data_lenght",dssp.size()+"");
+              Log.e("data_lenght",dssp.size()+"");
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
             }
-        });
+        }){
+          @Override
+          public Map<String, String> getHeaders() throws AuthFailureError {
+              Map<String,String>params =new HashMap<>();
+              params.put("content-type ","application/json; charset=utf-8");
+              return params;
+          }
+      };
+
+    @Override
+    public void onDestroy() {
+        Log.e("fragment","Đã xóa hẳn fragment");
+        super.onDestroy();
+    }
 }

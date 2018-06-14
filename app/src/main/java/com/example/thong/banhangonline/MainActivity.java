@@ -24,11 +24,14 @@ import com.example.thong.fragment.fragment_mypham;
 import com.example.thong.fragment.fragment_toc;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import devlight.io.library.ntb.NavigationTabBar;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    Map<String,Boolean>_check=new HashMap<>();
     FragmentManager manager =getFragmentManager();
     NavigationTabBar navigationTabBar;
     ArrayList<NavigationTabBar.Model> listmodel =new ArrayList<>();
@@ -46,14 +49,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addData() {
-
+        _check.put("home",false);
+        _check.put("toc",false);
+        _check.put("dodien",false);
         listFragment.put("home",new fragment_home());
         listFragment.put("mypham",new fragment_mypham());
         listFragment.put("toc",new fragment_toc());
         listFragment.put("thietbi",new fragment_thietbi());
         listFragment.put("giohang",new fragment_giohang());
         listFragment.put("them",new fragment_them());
-
         listmodel.add(new NavigationTabBar.Model
                 .Builder(getResources().getDrawable(R.drawable.home)
                 ,Color.WHITE).title("Home")
@@ -103,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             public void onEndTabSelected(NavigationTabBar.Model model, int index) {
                 switch (index){
                     case 0: {
-                     changeFragment(listFragment.get("home"),manager,"home",0);
+                            changeFragment(listFragment.get("home"),manager,"home",0);
                     }break;
                     case 1:{
                         changeFragment(listFragment.get("mypham"),manager,"mypham",1);

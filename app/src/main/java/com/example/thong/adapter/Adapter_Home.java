@@ -1,6 +1,5 @@
 package com.example.thong.adapter;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,9 +14,9 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class Adapter_Hone extends RecyclerView.Adapter<Adapter_Hone.ViewHolder> {
+public class Adapter_Home extends RecyclerView.Adapter<Adapter_Home.ViewHolder> {
     ArrayList<SanPham>dssp;
-    public Adapter_Hone(ArrayList<SanPham>dssp){
+    public Adapter_Home(ArrayList<SanPham>dssp){
         this.dssp=dssp;
     }
 
