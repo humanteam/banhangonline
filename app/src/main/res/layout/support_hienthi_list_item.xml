@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="101dp"
+    android:layout_height="104dp"
+    android:background="#b8a8a8"
     android:gravity="top|center"
     android:orientation="horizontal"
     android:weightSum="1">
@@ -9,6 +10,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="100dp"
+        android:background="#ffffff"
         android:layout_weight="1"
         android:orientation="vertical"
         android:weightSum="0.9">
@@ -23,9 +25,9 @@
             <ImageView
                 android:id="@+id/imganhsp"
                 android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginRight="0dp"
                 android:background="@drawable/mun"
+                android:layout_height="match_parent"
+                android:layout_marginRight="0dp"
                 android:padding="5dp"
                 android:scaleType="centerCrop" />
 
@@ -55,7 +57,7 @@
                     <TextView
                         android:id="@+id/tvTitle"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="match_parent"
                         android:ellipsize="marquee"
                         android:focusable="true"
                         android:focusableInTouchMode="true"
@@ -81,7 +83,7 @@
                         <TextView
                             android:id="@+id/tvContent"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="53dp"
                             android:maxLines="3"
                             android:text="mô tả ngắn SP ở đây"
                             android:textColor="#000000"
@@ -92,37 +94,59 @@
                         android:layout_width="match_parent"
                         android:layout_height="35dp"
                         android:layout_weight="0.2"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:layout_marginRight="5dp">
 
                         <Button
                             android:id="@+id/btnmua"
-                            android:layout_width="wrap_content"
-                            android:layout_height="35dp"
-                            android:layout_gravity="bottom"
+                            android:layout_width="65dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="top"
                             android:layout_weight="0.2"
+                            android:background="@drawable/button_border"
                             android:gravity="center"
+                            android:padding="1dp"
                             android:text="Mua"
                             android:textColor="#000000"
                             android:textSize="13sp" />
 
                         <Button
                             android:id="@+id/btngia"
-                            android:layout_width="wrap_content"
-                            android:layout_height="35dp"
-                            android:layout_gravity="bottom"
+                            android:layout_width="75dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="top"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@+id/btnmua"
+                            android:layout_toRightOf="@+id/btnmua"
                             android:layout_weight="0.2"
+                            android:background="@drawable/button_border"
                             android:gravity="center"
+                            android:padding="1dp"
                             android:text="Giá"
+                            android:textColor="#000000"
+                            android:textSize="13sp" />
+
+                        <Button
+                            android:id="@+id/themgiohang"
+                            android:layout_width="137dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_gravity="top"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@+id/btngia"
+                            android:layout_toRightOf="@+id/btngia"
+                            android:layout_weight="0.2"
+                            android:background="@drawable/button_border"
+                            android:gravity="center"
+                            android:padding="1dp"
+                            android:text="Thêm vào giỏ"
                             android:textColor="#000000"
                             android:textSize="13sp" />
                     </LinearLayout>
                 </LinearLayout>
-
             </LinearLayout>
-
         </LinearLayout>
-
     </LinearLayout>
-
 </LinearLayout>
-

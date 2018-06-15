@@ -17,7 +17,7 @@
             android:id="@+id/RelativeLayout1"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#ab9494">
+            android:background="@drawable/timkiem_border">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -32,26 +32,28 @@
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
                     android:ems="10"
-                    android:padding="10dp"
                     android:hint="@string/nh_p_t_c_n_t_m_ki_m"
                     android:inputType="text"
-                    android:textColor="#FFF"
-                    android:textColorHint="#FFF"
-                    android:textSize="20sp" />
+                    android:padding="10dp"
+                    android:textColor="#f0020202"
+                    android:textColorHint="#e0484444"
+                    android:textSize="20sp"
+                    android:visibility="visible" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true">
 
                 <ImageView
                     android:id="@+id/im_timkiem"
                     android:layout_width="50dp"
-                    android:layout_height="wrap_content"
+                    android:background="@drawable/timkiem_border"
+                    android:layout_height="match_parent"
                     android:contentDescription="@string/seach"
-                    android:src="@drawable/timkiem" />
+                    android:src="@android:drawable/ic_menu_search" />
             </LinearLayout>
 
         </RelativeLayout>
@@ -95,15 +97,15 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewpager"
-            app:ntb_active_color="#6e4747"
+            app:ntb_active_color="#000000"
             app:ntb_animation_duration="200"
             app:ntb_badge_bg_color="#874242"
             app:ntb_badge_gravity="top"
             app:ntb_badge_position="right"
-            app:ntb_badge_title_color="#ffffffff"
-            app:ntb_bg_color="#ab9494"
+            app:ntb_badge_title_color="#cfec2727"
+            app:ntb_bg_color="#a2a2a2"
             app:ntb_corners_radius="2dp"
-            app:ntb_inactive_color="#ffffff"
+            app:ntb_inactive_color="#716a6a"
             app:ntb_title_mode="all"
             app:ntb_titled="true" />
     </LinearLayout>

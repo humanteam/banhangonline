@@ -3,20 +3,57 @@ package com.example.thong.fragment;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.thong.APIs;
+import com.example.thong.adapter.Adapter_Home;
 import com.example.thong.banhangonline.R;
+import com.example.thong.model.SanPham;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class fragment_thietbi extends Fragment{
+
+    RecyclerView recyclerView;
+    Adapter_Home adapter;
+    int lastpositon=0;
+    ArrayList<SanPham>dssp=new ArrayList<>();
+
     View view;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view =inflater.inflate(R.layout.fragment_dientu,container,false);
+        addControlls(view);
         return view;
     }
+
+    private void addControlls(View view) {
+        recyclerView =view.findViewById(R.id.list_thietbi);
+        LinearLayoutManager manager= new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+        recyclerView.setLayoutManager(manager);
+        adapter=new Adapter_Home(dssp);
+        recyclerView.setAdapter(adapter);
+        Volley.newRequestQueue(getActivity()).add(request);
+    }
+
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
@@ -31,6 +68,43 @@ public class fragment_thietbi extends Fragment{
     public void onDestroyView() {
         view.clearFocus();
         view.clearAnimation();
+        Volley.newRequestQueue(getActivity()).cancelAll(request);
+        view=null;
         super.onDestroyView();
     }
+    public JsonArrayRequest request =new JsonArrayRequest(APIs.api_thietbi, new Response.Listener<JSONArray>() {
+        @Override
+        public void onResponse(JSONArray response) {
+            dssp.clear();
+            for(int i=lastpositon;i<response.length();i++){
+                try {
+                    JSONObject obj =response.getJSONObject(i);
+                    SanPham sp =new SanPham();
+                    sp.setMasp(obj.getString("MaSP"));
+                    sp.setTensp(obj.getString("TenSP"));
+                    sp.setAnh(obj.getString("AnhSP"));
+                    sp.setChitiet(obj.getString("ChiTietSP"));
+                    sp.setGia(obj.getString("GiaSP"));
+                    sp.setMatheloai(obj.getString("MaTheLoai"));
+                    dssp.add(sp);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+            adapter.notifyDataSetChanged();
+            Log.e("data_lenght",dssp.size()+"");
+        }
+    }, new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
+        }
+    }){
+        @Override
+        public Map<String, String> getHeaders() throws AuthFailureError {
+            Map<String,String>params =new HashMap<>();
+            params.put("content-type","application/json; charset=utf-8");
+            return params;
+        }
+    };
 }
