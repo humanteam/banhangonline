@@ -80,5 +80,20 @@ public class fragment_nhanxet extends Fragment implements View.OnClickListener {
         transaction.replace(R.id.viewpager, newFragment);
         transaction.addToBackStack(null);
     }
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser){
 
+        }
+        else {
+            mview1.clearFocus();
+        }
+    }
+    @Override
+    public void onDestroyView() {
+        mview1.clearFocus();
+        mview1.clearAnimation();
+        super.onDestroyView();
+    }
 }

@@ -36,7 +36,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="0dp"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="26dp"
         android:text="I. Bản quyền nội dung bài viết và sản phẩm\n\n- Tất cả các bài viết, sản phẩm trên ứng dụng đều hoàn toàn thuộc quyền sở hữu của nhà phát hành.\n
 - Thông tin những bài viết, sản phẩm... trên ứng dụng chỉ mang tính chất cho người dùng tham khảo thêm trước khi quyết định mua sản phẩm, nhằm cung cấp thêm kiến thức và hướng dẫn chung cho quý khách hàng.\n
 - Những ý kiến hay quan điểm trong các bài viết luôn hướng đến việc cung cấp những thông tin chính xác và trung thực theo sự nghiên cứu của chuyên gia và tổng hợp từ các nguồn tham khảo khác nhau.\n

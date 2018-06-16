@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
                 .badgeTitle("lamtoc").build());
         listmodel.add(new NavigationTabBar.Model
                 .Builder(getResources().getDrawable(R.drawable.dodientu),Color.WHITE)
-                .title("Điện Tử")
-                .badgeTitle("dientu").build());
+                .title("Thiết Bị")
+                .badgeTitle("thiet bi").build());
         listmodel.add(new NavigationTabBar.Model
                 .Builder(getResources().getDrawable(R.drawable.buy),Color.WHITE)
                 .title("Giỏ Hàng")
