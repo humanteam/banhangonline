@@ -1,16 +1,25 @@
 package com.example.thong.banhangonline;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
+import android.net.Uri;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.telecom.Call;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -56,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         addControlls();
         addEvent();
     }
+
     private void addData() {
         listFragment.put("home",new fragment_home());
         listFragment.put("mypham",new fragment_mypham());
@@ -152,6 +162,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     void changeFragment(Fragment fragment,FragmentManager manager,String tag,int id){
         FragmentTransaction transaction =manager.beginTransaction();
         Fragment bridge =getFragmentManager().findFragmentByTag(tag);
