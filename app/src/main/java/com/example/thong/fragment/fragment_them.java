@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.thong.Dialog.Cua_hang_truc_tiep;
 import com.example.thong.Dialog.DieuKhoanVaBanQuyen;
 import com.example.thong.Dialog.HuongDanSuDung;
 import com.example.thong.banhangonline.R;
@@ -52,6 +53,8 @@ public class fragment_them extends Fragment {
             @Override
             public void onClick(View v) {
                 //bắt sự kiện vào đây
+                Cua_hang_truc_tiep ch = new Cua_hang_truc_tiep(getActivity());
+                ch.show();
             }
         });
 

@@ -2,17 +2,22 @@ package com.example.thong.banhangonline;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.thong.banhangonline.R;
 
 public class DieuKhoan extends AppCompatActivity {
+    private final int CALL_REQUEST = 100;
     private static boolean activity;
     Button btn;
     TextView txt;
@@ -60,9 +65,22 @@ public class DieuKhoan extends AppCompatActivity {
             editor.putString("firstTime", "no");
             editor.commit();
         }
+    }
 
-       // txt.setText(Html.fromHtml(getResources().getString(R.string.Dieu_khoan))); // tạo điều khoản trong string
-       // txt.setPaintFlags(txt.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG); //chữ gạch ở giữa
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == CALL_REQUEST)
+        {
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            {
+
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.call_permission_denied_message), Toast.LENGTH_SHORT).show();
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }
 
