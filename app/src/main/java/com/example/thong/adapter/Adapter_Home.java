@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.thong.APIs;
 import com.example.thong.Dialog.MuaSanPham;
+import com.example.thong.Dialog.Thong_tin_san_pham;
 import com.example.thong.banhangonline.Database;
 import com.example.thong.banhangonline.R;
 import com.example.thong.model.SanPham;
@@ -58,6 +59,15 @@ public class Adapter_Home extends RecyclerView.Adapter<Adapter_Home.ViewHolder> 
             public void onClick(View v) {
                 database=new Database(holder.itemView.getContext(), APIs.database_name,null,1);
                 String query ="INSERT INTO GioHang ('MaSP,TenSP,Anh,ChiTiet,MaTheLoai,Gia,SoLuong,ThanhTien,TrangThai') VALUES";
+            }
+        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SanPham sp =dssp.get(position);
+                Thong_tin_san_pham tt =new Thong_tin_san_pham(holder.itemView.getContext(),R.style.myDialog,sp);
+                tt.getWindow().setGravity(Gravity.BOTTOM);
+                tt.show();
             }
         });
     }

@@ -18,23 +18,24 @@
         android:weightSum="1">
 
         <ImageView
-            android:id="@+id/imganhsp"
+            android:id="@+id/img_ttsp"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:src="@drawable/mun" />
 
         <TextView
+            android:id="@+id/txt_tttensp"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:text="Tên sản phẩm"
-            android:layout_marginRight="5dp"
             android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/button_border_tensp"
             android:gravity="center"
-            android:textColor="#000"
             android:maxLines="2"
             android:singleLine="false"
-            android:background="@drawable/button_border_tensp" />
+            android:text="Tên sản phẩm"
+            android:textColor="#000" />
 
     </LinearLayout>
 
@@ -54,31 +55,34 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/btn_ttmua"
                 android:layout_width="85dp"
                 android:layout_height="25dp"
-                android:layout_weight="0.5"
                 android:layout_gravity="right"
+                android:layout_weight="0.5"
                 android:background="@drawable/button_border_goc"
                 android:text="Mua"
                 android:textColor="#000" />
 
             <Button
+                android:id="@+id/btn_tt_gia"
                 android:layout_width="135dp"
                 android:layout_height="25dp"
-                android:layout_weight="0.5"
                 android:layout_gravity="right"
                 android:layout_marginTop="3dp"
+                android:layout_weight="0.5"
                 android:background="@drawable/button_border_goc"
                 android:text="Giá"
                 android:textColor="#000" />
 
             <Button
+                android:id="@+id/btn_tt_giohang"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_marginTop="3dp"
-                android:textColor="#000"
                 android:background="@drawable/button_border_goc"
-                android:text="Thêm Vào Giỏ Hàng" />
+                android:text="Thêm Vào Giỏ Hàng"
+                android:textColor="#000" />
 
         </LinearLayout>
     </LinearLayout>
@@ -91,10 +95,9 @@
         android:layout_marginTop="3dp">
 
         <WebView
+            android:id="@+id/webview_chitiet"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/webViewsp"
-            android:background="#fff">
-        </WebView>
+            android:background="#fff"></WebView>
     </LinearLayout>
 </LinearLayout>
