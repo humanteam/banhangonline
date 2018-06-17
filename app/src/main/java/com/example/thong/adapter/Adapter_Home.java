@@ -1,6 +1,10 @@
 package com.example.thong.adapter;
 
 import android.app.Activity;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -10,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.thong.APIs;
 import com.example.thong.Dialog.MuaSanPham;
@@ -22,7 +27,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class Adapter_Home extends RecyclerView.Adapter<Adapter_Home.ViewHolder> {
-    Database database;
+    SQLiteDatabase database;
     ArrayList<SanPham>dssp;
     public Adapter_Home(ArrayList<SanPham>dssp){
         this.dssp=dssp;
@@ -46,10 +51,11 @@ public class Adapter_Home extends RecyclerView.Adapter<Adapter_Home.ViewHolder> 
         holder.txtchitiet.setText(dssp.get(position).getChitiet());
         holder.txtstt.setText((position+1)+"");
         //Events
+        final SanPham sp =dssp.get(position);
         holder.btnmua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MuaSanPham muaSanPham =new MuaSanPham(holder.itemView.getContext(),R.style.myDialog,dssp.get(position));
+                MuaSanPham muaSanPham =new MuaSanPham(holder.itemView.getContext(),R.style.myDialog,sp);
                 muaSanPham.getWindow().setGravity(Gravity.BOTTOM);
                 muaSanPham.show();
             }
@@ -57,8 +63,24 @@ public class Adapter_Home extends RecyclerView.Adapter<Adapter_Home.ViewHolder> 
         holder.btnthemgiohang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                database=new Database(holder.itemView.getContext(), APIs.database_name,null,1);
-                String query ="INSERT INTO GioHang ('MaSP,TenSP,Anh,ChiTiet,MaTheLoai,Gia,SoLuong,ThanhTien,TrangThai') VALUES";
+                database=holder.itemView.getContext().openOrCreateDatabase(APIs.database_name, Context.MODE_PRIVATE,null);
+                Cursor cursor =database.rawQuery("SELECT Id FROM GioHang WHERE MaSP="+sp.getMasp(),null);
+                if(cursor.moveToFirst()){
+                    Toast.makeText(holder.itemView.getContext(), "Đã tồn tại sản phẩm trong giỏ hàng", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    ContentValues contentValues =new ContentValues();
+                    contentValues.put("MaSP",sp.getMasp());
+                    contentValues.put("TenSP",sp.getTensp());
+                    contentValues.put("Anh",sp.getAnh());
+                    contentValues.put("ChiTiet",sp.getChitiet());
+                    contentValues.put("MaTheLoai",sp.getMatheloai());
+                    contentValues.put("Gia",sp.getGia());
+                    contentValues.put("SoLuong",1);
+                    contentValues.put("ThanhTien",sp.getGia());
+                    contentValues.put("TrangThai",0);
+                    Toast.makeText(holder.itemView.getContext(), "Đã thêm vào giỏ hàng thành công", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
