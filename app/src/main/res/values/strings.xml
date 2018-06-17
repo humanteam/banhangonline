@@ -4,8 +4,8 @@
     <string name="nh_p_t_c_n_t_m_ki_m">Nhập từ cần tìm kiếm</string>
     <string name="seach">Seach</string>
     <string name="mobile_no">Mobile No.</string>
-    <string name="call">Call</string>
-    <string name="phone_empty_message">Please enter phone no.!</string>
-    <string name="invalid_no_message">Invalid phone no.!</string>
+    <string name="call">Gọi</string>
+    <string name="phone_empty_message">Không thể để trống số điện thoại.!</string>
+    <string name="invalid_no_message">Không thể thực hiện.!</string>
     <string name="call_permission_denied_message">Call permission denied</string>
 </resources>

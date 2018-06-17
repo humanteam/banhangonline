@@ -8,9 +8,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -18,6 +15,7 @@ import android.widget.TextView;
 import com.example.thong.Dialog.Cua_hang_truc_tiep;
 import com.example.thong.Dialog.DieuKhoanVaBanQuyen;
 import com.example.thong.Dialog.HuongDanSuDung;
+import com.example.thong.Dialog.Lien_ket_website;
 import com.example.thong.banhangonline.R;
 
 public class fragment_them extends Fragment {
@@ -42,11 +40,9 @@ public class fragment_them extends Fragment {
         txtwebsite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager manager = getActivity().getFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.viewpager, new fragment_lienketwebsite());
-               // transaction.addToBackStack("lienketwebsite");
-                transaction.commit();
+                Lien_ket_website ch = new Lien_ket_website(getActivity(),R.style.myDialog);
+                ch.getWindow().setGravity(Gravity.BOTTOM);
+                ch.show();
             }
         });
 
@@ -68,7 +64,6 @@ public class fragment_them extends Fragment {
                 FragmentManager manager = getActivity().getFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
                 transaction.replace(R.id.viewpager, new fragment_nhanxet());
-                //transaction.addToBackStack("nhanxet");
                 transaction.commit();
             }
         });

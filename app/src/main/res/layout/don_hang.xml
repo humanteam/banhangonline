@@ -163,9 +163,9 @@
                         android:layout_width="192dp"
                         android:layout_height="45dp"
                         android:layout_marginLeft="10dp"
+                        android:gravity="center"
                         android:textColor="#000"
                         android:textSize="17dp" />
-
 
                     <TextView
                         android:layout_width="40dp"
@@ -173,7 +173,8 @@
                         android:layout_marginBottom="0dp"
                         android:layout_marginRight="0dp"
                         android:layout_toEndOf="@+id/txt_dongia"
-                        android:layout_toRightOf="@+id/txt_dongia" android:background="@drawable/don_hang_boder"
+                        android:layout_toRightOf="@+id/txt_dongia"
+                        android:background="@drawable/don_hang_boder"
                         android:gravity="center"
                         android:text="VND"
                         android:textColor="#000" />
