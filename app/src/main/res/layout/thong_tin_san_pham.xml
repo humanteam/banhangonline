@@ -21,6 +21,7 @@
             android:id="@+id/imganhsp"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
+            android:background="@drawable/button_border_cua_hang"
             android:layout_gravity="center"
             android:src="@drawable/mun" />
 

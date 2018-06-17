@@ -158,9 +158,9 @@
                         android:id="@+id/txt_dongia"
                         android:layout_width="192dp"
                         android:layout_height="45dp"
-                        android:textSize="17dp"
                         android:layout_marginLeft="10dp"
-                        android:textColor="#000" />
+                        android:textColor="#000"
+                        android:textSize="17dp" />
 
                     <TextView
                         android:layout_width="40dp"
