@@ -1,6 +1,11 @@
 package com.example.thong.model;
 
 public class GioHang extends SanPham {
+
+    public GioHang(){
+
+    }
+
     String soluong,thanhtien,trangthai;
 
     public String getSoluong() {
