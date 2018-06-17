@@ -16,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thong.banhangonline.R;
-import com.example.thong.model.DonHang;
 import com.example.thong.model.SanPham;
 
 public class MuaSanPham extends Dialog {
@@ -46,6 +45,7 @@ public class MuaSanPham extends Dialog {
     }
 
     private void addEvents() {
+        final double giamoi =Double.parseDouble(sp.getGia().substring(0,sp.getGia().length()-5));
      txt_xacnhan.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
@@ -90,16 +90,13 @@ public class MuaSanPham extends Dialog {
 
          @Override
          public void onTextChanged(CharSequence s, int start, int before, int count) {
-             try{
                  if(s.length()!=0 && Double.parseDouble(s.toString())<=100){
-                     double tien =tinhtien(Double.parseDouble(sp.getGia()),Double.parseDouble(s.toString()));
-                     txt_thanhtien.setText(""+tien);
+                    double tien =tinhtien(giamoi,Double.parseDouble(edt_soluong.getText().toString()));
+                    String duatienlenmanhinh=tien+"000";
+                    String sotienmoi=duatienlenmanhinh.substring(0,(duatienlenmanhinh.indexOf("."))-1)+duatienlenmanhinh.substring((duatienlenmanhinh.indexOf("."))+1,duatienlenmanhinh.length());
+                     Log.e("tien",sotienmoi);
+                    txt_thanhtien.setText(sotienmoi);
                  }
-             }
-             catch (NumberFormatException ex){
-                 Toast.makeText(getContext(),"Bạn chưa nhập số lượng",Toast.LENGTH_LONG).show();
-             }
-
          }
 
          @Override
