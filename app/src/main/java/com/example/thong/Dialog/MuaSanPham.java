@@ -52,7 +52,14 @@ public class MuaSanPham extends Dialog {
              String tenkhachhang =edt_khachhang.getText().toString();
              String sdt=edt_sdt.getText().toString();
              String diachi=edt_diachi.getText().toString();
-             int soluong =Integer.parseInt(edt_soluong.getText().toString());
+             int soluong = 0;
+             try{
+                   soluong =Integer.parseInt(edt_soluong.getText().toString());
+             }
+             catch (NumberFormatException ex){
+                 Toast.makeText(context,"Số lượng không được để trống",Toast.LENGTH_LONG).show();
+             }
+
              if(tenkhachhang.length()<=0){
 
 
@@ -83,10 +90,16 @@ public class MuaSanPham extends Dialog {
 
          @Override
          public void onTextChanged(CharSequence s, int start, int before, int count) {
-          if(s.length()!=0){
-              double tien =tinhtien(Double.parseDouble(sp.getGia()),Double.parseDouble(s.toString()));
-              txt_thanhtien.setText(""+tien);
-          }
+             try{
+                 if(s.length()!=0 && Double.parseDouble(s.toString())<=100){
+                     double tien =tinhtien(Double.parseDouble(sp.getGia()),Double.parseDouble(s.toString()));
+                     txt_thanhtien.setText(""+tien);
+                 }
+             }
+             catch (NumberFormatException ex){
+                 Toast.makeText(getContext(),"Bạn chưa nhập số lượng",Toast.LENGTH_LONG).show();
+             }
+
          }
 
          @Override
