@@ -28,9 +28,10 @@ public class Cua_hang_truc_tiep extends Dialog {
     EditText mobileNoEt;
     Button callBt;
 
-    public Cua_hang_truc_tiep(@NonNull Context context) {
-        super(context);
+    public Cua_hang_truc_tiep(@NonNull Context context, int themeResId) {
+        super(context, themeResId);
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

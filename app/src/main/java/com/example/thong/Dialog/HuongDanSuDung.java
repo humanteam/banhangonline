@@ -12,8 +12,10 @@ import android.view.WindowManager;
 import com.example.thong.banhangonline.R;
 
 public class HuongDanSuDung extends Dialog{
-    public HuongDanSuDung(@NonNull Context context) {
-        super(context);
+
+
+    public HuongDanSuDung(@NonNull Context context, int themeResId) {
+        super(context, themeResId);
     }
 
     @Override

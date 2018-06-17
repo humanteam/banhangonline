@@ -6,6 +6,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,7 +32,8 @@ public class fragment_them extends Fragment {
         txtdieukiensudung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DieuKhoanVaBanQuyen dk = new DieuKhoanVaBanQuyen(getActivity());
+                DieuKhoanVaBanQuyen dk = new DieuKhoanVaBanQuyen(getActivity(),R.style.myDialog);
+                dk.getWindow().setGravity(Gravity.BOTTOM);
                 dk.show();
             }
         });
@@ -53,7 +55,8 @@ public class fragment_them extends Fragment {
             @Override
             public void onClick(View v) {
                 //bắt sự kiện vào đây
-                Cua_hang_truc_tiep ch = new Cua_hang_truc_tiep(getActivity());
+                Cua_hang_truc_tiep ch = new Cua_hang_truc_tiep(getActivity(),R.style.myDialog);
+                ch.getWindow().setGravity(Gravity.BOTTOM);
                 ch.show();
             }
         });
@@ -85,7 +88,8 @@ public class fragment_them extends Fragment {
         txthuongdansudung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HuongDanSuDung dk = new HuongDanSuDung(getActivity());
+                HuongDanSuDung dk = new HuongDanSuDung(getActivity(),R.style.myDialog);
+                dk.getWindow().setGravity(Gravity.BOTTOM);
                 dk.show();
             }
         });
