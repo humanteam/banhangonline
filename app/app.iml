@@ -106,7 +106,10 @@
 =======
 >>>>>>> 9e8247258e4c0387006ee91d2204e8123bb4cbf4
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res" />
+<<<<<<< HEAD
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/resources" />
+=======
+>>>>>>> d7a6c90eebc99710ab542206dd9c06a3a2d75ee3
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/rs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/shaders" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/split-apk" />
