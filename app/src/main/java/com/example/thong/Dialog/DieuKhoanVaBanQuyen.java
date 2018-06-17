@@ -12,8 +12,9 @@ import com.example.thong.banhangonline.R;
 
 public class DieuKhoanVaBanQuyen extends Dialog {
 
-    public DieuKhoanVaBanQuyen(@NonNull Context context) {
-        super(context);
+
+    public DieuKhoanVaBanQuyen(@NonNull Context context, int themeResId) {
+        super(context, themeResId);
     }
 
     @Override
