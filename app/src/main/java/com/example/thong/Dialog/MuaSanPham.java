@@ -70,7 +70,7 @@ public class MuaSanPham extends Dialog {
                  Toast.makeText(context, "Đơn hàng vượt quá số lượng cho phép.Nhập số lượng <=100 sản phẩm", Toast.LENGTH_SHORT).show();
              }
              else{
-
+                  //Send data len server
              }
          }
      });
@@ -84,8 +84,8 @@ public class MuaSanPham extends Dialog {
          @Override
          public void onTextChanged(CharSequence s, int start, int before, int count) {
           if(s.length()!=0){
-              float tien=(float)Integer.parseInt(s.toString())*(float)Integer.parseInt(txt_dongia.getText().toString());
-              txt_thanhtien.setText(tien+"");
+              double tien =tinhtien(Double.parseDouble(sp.getGia()),Double.parseDouble(s.toString()));
+              txt_thanhtien.setText(""+tien);
           }
          }
 
@@ -94,6 +94,10 @@ public class MuaSanPham extends Dialog {
 
          }
      });
+    }
+
+    private double tinhtien(double gia,double soluong){
+        return gia*soluong;
     }
 
     private void addControlls() {
@@ -105,5 +109,7 @@ public class MuaSanPham extends Dialog {
         txt_dongia=findViewById(R.id.txt_dongia);
         txt_thanhtien=findViewById(R.id.txt_thanhtien);
         txt_xacnhan=findViewById(R.id.txt_xacnhan);
+        txt_tenmathang.setText(sp.getTensp());
+        txt_dongia.setText(sp.getGia());
     }
 }
