@@ -5,6 +5,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.view.Gravity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
@@ -23,8 +25,10 @@ public class Thong_tin_san_pham extends Dialog{
         Button btnmua,btngia,btnthemgiohang;
         WebView webViewchitiet;
         SanPham sp;
+        Context context;
         public Thong_tin_san_pham(@NonNull Context context, int themeResId, SanPham sp) {
             super(context, themeResId);
+            this.context=context;
          this.sp=sp;
         }
 
@@ -41,7 +45,14 @@ public class Thong_tin_san_pham extends Dialog{
         }
 
     private void addEvents() {
-
+      btnmua.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+             MuaSanPham mua =new MuaSanPham(context,R.style.myDialog,sp);
+             mua.getWindow().setGravity(Gravity.BOTTOM);
+             mua.show();
+          }
+      });
     }
 
     private void addControlls() {
@@ -50,10 +61,8 @@ public class Thong_tin_san_pham extends Dialog{
          btnmua=findViewById(R.id.btn_ttmua);
          btngia=findViewById(R.id.btn_tt_gia);
          btnthemgiohang=findViewById(R.id.btn_tt_giohang);
-        // tensp.setText(sp.getTensp());
-        // Picasso.with(getContext()).load(sp.getGia()).into(imghinhanh).;
-        // btngia.setText(sp.getGia());
-        // webViewchitiet.loadData(sp.getChitiet(),null,"UTF-8");
-        // webViewchitiet.setBackgroundColor(Color.WHITE);
+         tensp.setText(sp.getTensp());
+         Picasso.with(getContext()).load(sp.getAnh()).error(R.drawable.mun).into(imghinhanh);
+         btngia.setText(sp.getGia());
         }
 }

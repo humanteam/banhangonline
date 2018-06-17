@@ -79,8 +79,10 @@ public class Adapter_Home extends RecyclerView.Adapter<Adapter_Home.ViewHolder> 
                     contentValues.put("SoLuong",1);
                     contentValues.put("ThanhTien",sp.getGia());
                     contentValues.put("TrangThai",0);
+                    database.insert("GioHang",null,contentValues);
                     Toast.makeText(holder.itemView.getContext(), "Đã thêm vào giỏ hàng thành công", Toast.LENGTH_SHORT).show();
                 }
+                cursor.close();
             }
         });
         holder.itemView.setOnClickListener(new View.OnClickListener() {

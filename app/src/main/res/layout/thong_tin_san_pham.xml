@@ -2,103 +2,108 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
-    android:weightSum="1"
-    android:orientation="vertical">
+    android:background="@drawable/bgttsp"
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:weightSum="1">
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:layout_weight="0.5"
-        android:orientation="vertical"
-        android:weightSum="1">
-
-        <ImageView
-            android:id="@+id/img_ttsp"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:background="@drawable/button_border_cua_hang"
-            android:layout_gravity="center"
-            android:src="@drawable/mun" />
-
-        <TextView
-            android:id="@+id/txt_tttensp"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/button_border_tensp"
-            android:gravity="center"
-            android:maxLines="2"
-            android:singleLine="false"
-            android:text="Tên sản phẩm"
-            android:textColor="#000" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:layout_weight="0.5"
-        android:orientation="vertical"
-        android:weightSum="1">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="49dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:orientation="vertical">
+            android:layout_width="0dp"
+            android:layout_height="140dp"
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-            <Button
-                android:id="@+id/btn_ttmua"
-                android:layout_width="85dp"
-                android:layout_height="25dp"
-                android:layout_gravity="right"
-                android:layout_weight="0.5"
-                android:background="@drawable/button_border_goc"
-                android:text="Mua"
-                android:textColor="#000" />
-
-            <Button
-                android:id="@+id/btn_tt_gia"
-                android:layout_width="135dp"
-                android:layout_height="25dp"
-                android:layout_gravity="right"
+            <ImageView
+                android:id="@+id/img_ttsp"
+                android:layout_width="wrap_content"
+                android:layout_height="93dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="3dp"
-                android:layout_weight="0.5"
-                android:background="@drawable/button_border_goc"
-                android:text="Giá"
-                android:textColor="#000" />
+                android:background="@drawable/button_border_cua_hang"
+                android:src="@drawable/mun" />
 
-            <Button
-                android:id="@+id/btn_tt_giohang"
+            <TextView
+                android:id="@+id/txt_tttensp"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
+                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="3dp"
-                android:background="@drawable/button_border_goc"
-                android:text="Thêm Vào Giỏ Hàng"
+                android:background="@drawable/button_border_tensp"
+                android:gravity="center"
+                android:maxLines="2"
+                android:singleLine="false"
+                android:text="Tên sản phẩm"
                 android:textColor="#000" />
 
         </LinearLayout>
-    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="130dp"
+            android:layout_weight="0.5"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="49dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_ttmua"
+                    android:layout_width="85dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/button_border_goc"
+                    android:text="Mua"
+                    android:textColor="#000" />
+
+                <Button
+                    android:id="@+id/btn_tt_gia"
+                    android:layout_width="135dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="3dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/button_border_goc"
+                    android:text="Giá"
+                    android:textColor="#000" />
+
+                <Button
+                    android:id="@+id/btn_tt_giohang"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/button_border_goc"
+                    android:text="Thêm Vào Giỏ Hàng"
+                    android:textColor="#000" />
+
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp">
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
 
         <WebView
             android:id="@+id/webview_chitiet"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#fff"></WebView>
+            android:background="#fff">
+        </WebView>
     </LinearLayout>
 </LinearLayout>
