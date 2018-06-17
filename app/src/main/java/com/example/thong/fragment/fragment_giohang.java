@@ -8,6 +8,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.thong.APIs;
+import com.example.thong.adapter.Adapter_GioHang;
 import com.example.thong.banhangonline.Database;
 import com.example.thong.banhangonline.R;
 import com.example.thong.model.GioHang;
@@ -25,24 +28,27 @@ public class fragment_giohang extends Fragment {
     SQLiteDatabase database;
     ArrayList<GioHang>dsgh =new ArrayList<>();
     RecyclerView recyclerView;
-
-
+    Adapter_GioHang adapter;
     View view;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         view =inflater.inflate(R.layout.fragment_giohang,container,false);
+        getData();
+        recyclerView=view.findViewById(R.id.list_giohang);
+        GridLayoutManager gridLayoutManager =new GridLayoutManager(getActivity(),2);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        adapter=new Adapter_GioHang(dsgh);
+        recyclerView.setAdapter(adapter);
         if(dsgh.size()<=0){
             Toast.makeText(getActivity(),"Giỏ hàng của bạn rỗng !",Toast.LENGTH_LONG).show();
-        }
-        else {
-
         }
         return  view;
     }
 
 
     private void getData(){
+        dsgh.clear();
         database=getActivity().openOrCreateDatabase(APIs.database_name,Context.MODE_PRIVATE,null);
         Cursor cursor =database.rawQuery("select * from GioHang",null);
         while (cursor.moveToNext()){
