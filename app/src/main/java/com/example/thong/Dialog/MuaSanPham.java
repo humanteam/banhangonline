@@ -1,9 +1,11 @@
 package com.example.thong.Dialog;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -22,11 +24,11 @@ public class MuaSanPham extends Dialog {
     EditText edt_khachhang,edt_sdt,edt_diachi,edt_soluong;
     TextView txt_tenmathang,txt_dongia,txt_thanhtien,txt_xacnhan;
     SanPham sp;
-    Context context;
+    Activity context;
     public MuaSanPham(@NonNull Context context, int themeResId, SanPham sp) {
         super(context, themeResId);
         this.sp=sp;
-        this.context=context;
+        this.context= (Activity) context;
     }
 
     @Override
@@ -50,7 +52,12 @@ public class MuaSanPham extends Dialog {
              String diachi=edt_diachi.getText().toString();
              int soluong =Integer.parseInt(edt_soluong.getText().toString());
              if(tenkhachhang.length()<=0){
-                 Toast.makeText(context, "Tên khách hàng không được bỏ trống", Toast.LENGTH_SHORT).show();
+
+
+                 Toast.makeText(getContext().getApplicationContext(), "Tên khách hàng không được bỏ trống", Toast.LENGTH_LONG).show();
+
+
+                 Log.e("toast","Da toast len thong bao");
              }
              else if(sdt.length()<=9){
                  Toast.makeText(context, "Số điện thoại không hợp lệ", Toast.LENGTH_SHORT).show();
@@ -60,6 +67,9 @@ public class MuaSanPham extends Dialog {
              }
              else if(soluong<=0||soluong>100){
                  Toast.makeText(context, "Đơn hàng vượt quá số lượng cho phép.Nhập số lượng <=100 sản phẩm", Toast.LENGTH_SHORT).show();
+             }
+             else{
+                 //Send data server
              }
          }
      });

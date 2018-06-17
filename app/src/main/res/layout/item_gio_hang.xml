@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="170dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="0.1"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <ImageView
+            android:background="@drawable/button_border_cua_hang"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/combo" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Tên sản phẩm"
+            android:maxLines="2"
+            android:singleLine="false"
+            android:layout_marginTop="3dp"
+            android:textColor="#000"
+            android:gravity="center"
+            android:background="@drawable/button_border_tensp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="85dp"
+                android:layout_height="25dp"
+                android:text="Mua"
+                android:gravity="center"
+                android:textColor="#000"
+                android:background="@drawable/button_border_goc" />
+
+            <Button
+                android:layout_width="85dp"
+                android:layout_height="25dp"
+                android:text="Giá"
+                android:gravity="center"
+                android:textColor="#000"
+                android:background="@drawable/button_border_goc" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="3dp"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:background="@drawable/button_border_goc"
+                android:textColor="#000"
+                android:text="Xóa khỏi giỏ hàng"/>
+        </LinearLayout>
+
+</LinearLayout>
+</LinearLayout>
