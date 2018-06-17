@@ -52,8 +52,8 @@ public class MuaSanPham extends Dialog {
              if(tenkhachhang.length()<=0){
                  Toast.makeText(context, "Tên khách hàng không được bỏ trống", Toast.LENGTH_SHORT).show();
              }
-             else if(sdt.length()<=9){
-                 Toast.makeText(context, "Số điện thoại không hợp lệ", Toast.LENGTH_SHORT).show();
+             else if(sdt.length()<=9 || sdt.length()>=15){
+                 Toast.makeText(context, "Bạn vui lòng kiểm tra thừa thiếu số điện thoại", Toast.LENGTH_SHORT).show();
              }
              else if(diachi.length()<=0){
                  Toast.makeText(context, "Địa chỉ không hợp lệ", Toast.LENGTH_SHORT).show();
