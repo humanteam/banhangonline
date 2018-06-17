@@ -13,7 +13,7 @@
         android:layout_marginTop="5dp"
         android:layout_weight="0.1"
         android:orientation="vertical"
-        android:weightSum="0.5">
+        android:weightSum="1">
 
         <ImageView
             android:background="@drawable/button_border_cua_hang"
@@ -26,6 +26,7 @@
             android:layout_height="30dp"
             android:text="Tên sản phẩm"
             android:maxLines="2"
+            android:singleLine="false"
             android:layout_marginTop="3dp"
             android:textColor="#000"
             android:gravity="center"
