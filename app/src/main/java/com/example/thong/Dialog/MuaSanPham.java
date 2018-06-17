@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -56,10 +58,9 @@ public class MuaSanPham extends Dialog {
 
                  Toast.makeText(getContext().getApplicationContext(), "Tên khách hàng không được bỏ trống", Toast.LENGTH_LONG).show();
 
-
                  Log.e("toast","Da toast len thong bao");
              }
-             else if(sdt.length()<=9){
+             else if(sdt.length()<=9 || sdt.length()>=15){
                  Toast.makeText(context, "Số điện thoại không hợp lệ", Toast.LENGTH_SHORT).show();
              }
              else if(diachi.length()<=0){
@@ -69,8 +70,28 @@ public class MuaSanPham extends Dialog {
                  Toast.makeText(context, "Đơn hàng vượt quá số lượng cho phép.Nhập số lượng <=100 sản phẩm", Toast.LENGTH_SHORT).show();
              }
              else{
-                 //Send data server
+
              }
+         }
+     });
+
+     edt_soluong.addTextChangedListener(new TextWatcher() {
+         @Override
+         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+         }
+
+         @Override
+         public void onTextChanged(CharSequence s, int start, int before, int count) {
+          if(s.length()!=0){
+              float tien=(float)Integer.parseInt(s.toString())*(float)Integer.parseInt(txt_dongia.getText().toString());
+              txt_thanhtien.setText(tien+"");
+          }
+         }
+
+         @Override
+         public void afterTextChanged(Editable s) {
+
          }
      });
     }

@@ -54,11 +54,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         database =new Database(this, APIs.database_name,null,1);
         database.create_TB_GioHang();
-
-        String query ="INSERT INTO GioHang (MaSP,TenSP,Anh,ChiTiet,MaTheLoai,Gia,SoLuong,ThanhTien,TrangThai) values " +
-                "(1,'dkjsdjsd','asaskdjsd','ajdksjd',1,5,4,6,0)";
-        database.QueryData(query);
-
         addData();
         if(!checkinternet()){
             Toast.makeText(getApplicationContext(),"Please checked internet !",Toast.LENGTH_LONG).show();
