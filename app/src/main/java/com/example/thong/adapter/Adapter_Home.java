@@ -1,5 +1,6 @@
 package com.example.thong.adapter;
 
+import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -10,7 +11,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.thong.APIs;
 import com.example.thong.Dialog.MuaSanPham;
+import com.example.thong.Dialog.Thong_tin_san_pham;
+import com.example.thong.banhangonline.Database;
 import com.example.thong.banhangonline.R;
 import com.example.thong.model.SanPham;
 import com.squareup.picasso.Picasso;
@@ -18,6 +22,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class Adapter_Home extends RecyclerView.Adapter<Adapter_Home.ViewHolder> {
+    Database database;
     ArrayList<SanPham>dssp;
     public Adapter_Home(ArrayList<SanPham>dssp){
         this.dssp=dssp;
@@ -49,6 +54,22 @@ public class Adapter_Home extends RecyclerView.Adapter<Adapter_Home.ViewHolder> 
                 muaSanPham.show();
             }
         });
+        holder.btnthemgiohang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                database=new Database(holder.itemView.getContext(), APIs.database_name,null,1);
+                String query ="INSERT INTO GioHang ('MaSP,TenSP,Anh,ChiTiet,MaTheLoai,Gia,SoLuong,ThanhTien,TrangThai') VALUES";
+            }
+        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SanPham sp =dssp.get(position);
+                Thong_tin_san_pham tt =new Thong_tin_san_pham(holder.itemView.getContext(),R.style.myDialog,sp);
+                tt.getWindow().setGravity(Gravity.BOTTOM);
+                tt.show();
+            }
+        });
     }
 
     @Override
@@ -60,9 +81,10 @@ public class Adapter_Home extends RecyclerView.Adapter<Adapter_Home.ViewHolder> 
 
         ImageView img;
         TextView txtten,txtgia,txtchitiet,txtstt;
-        Button btnmua;
+        Button btnmua,btnthemgiohang;
         public ViewHolder(View itemView) {
             super(itemView);
+            btnthemgiohang=itemView.findViewById(R.id.themgiohang);
             btnmua=itemView.findViewById(R.id.btnmua);
             txtstt=itemView.findViewById(R.id.tvStt);
             img=itemView.findViewById(R.id.imganhsp);

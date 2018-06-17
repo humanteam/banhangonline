@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         android:fillViewport="true"
         android:scrollbars="vertical">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -99,9 +98,11 @@
                 android:weightSum="1">
 
                 <EditText
+                    android:maxLength="200"
                     android:id="@+id/edt_khachhang"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+                    android:backgroundTint="@color/colorline"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="30dp"
                     android:textColor="#000"
@@ -113,6 +114,7 @@
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="25dp"
+                    android:backgroundTint="@color/colorline"
                     android:inputType="phone"
                     android:textColor="#000"
                     android:textSize="17dp" />
@@ -121,6 +123,7 @@
                     android:id="@+id/edt_diachi"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+                    android:backgroundTint="@color/colorline"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="25dp"
                     android:textColor="#000"
@@ -145,6 +148,7 @@
                     android:layout_marginTop="30dp"
                     android:inputType="number"
                     android:text="1"
+                    android:backgroundTint="@color/colorline"
                     android:textColor="#000"
                     android:textSize="17dp" />
 
@@ -162,14 +166,14 @@
                         android:textColor="#000"
                         android:textSize="17dp" />
 
+
                     <TextView
                         android:layout_width="40dp"
                         android:layout_height="30dp"
                         android:layout_marginBottom="0dp"
                         android:layout_marginRight="0dp"
                         android:layout_toEndOf="@+id/txt_dongia"
-                        android:layout_toRightOf="@+id/txt_dongia"
-                        android:background="@drawable/don_hang_boder"
+                        android:layout_toRightOf="@+id/txt_dongia" android:background="@drawable/don_hang_boder"
                         android:gravity="center"
                         android:text="VND"
                         android:textColor="#000" />
