@@ -1,6 +1,8 @@
 package com.example.thong.adapter;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.thong.APIs;
 import com.example.thong.banhangonline.R;
 import com.example.thong.model.GioHang;
 import com.squareup.picasso.Picasso;
@@ -17,6 +20,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class Adapter_GioHang extends RecyclerView.Adapter<Adapter_GioHang.ViewHolder> {
+    SQLiteDatabase database;
     ArrayList<GioHang>dsgh;
     public Adapter_GioHang(ArrayList<GioHang>dsgh){
         this.dsgh=dsgh;
@@ -32,7 +36,7 @@ public class Adapter_GioHang extends RecyclerView.Adapter<Adapter_GioHang.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         Picasso.with(holder.itemView.getContext()).load(dsgh.get(position).getAnh()).error(R.drawable.mun).into(holder.img_giohang);
         holder.txttensp.setText(dsgh.get(position).getTensp().toString());
         holder.btnGia.setText(dsgh.get(position).getGia());
@@ -44,6 +48,15 @@ public class Adapter_GioHang extends RecyclerView.Adapter<Adapter_GioHang.ViewHo
         else if(tt==1){
             holder.txttrangthai.setText("Đã đặt hàng");
         }
+        holder.btnXoagiohang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                database =holder.itemView.getContext().openOrCreateDatabase(APIs.database_name,Context.MODE_PRIVATE,null);
+                database.delete("GioHang","MaSP="+dsgh.get(position).getMasp(),null);
+                dsgh.remove(position);
+                notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
