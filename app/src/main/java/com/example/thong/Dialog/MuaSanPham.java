@@ -54,13 +54,13 @@ public class MuaSanPham extends Dialog {
         super(context, themeResId);
         this.sp=sp;
         this.soluong=soluong;
-        this.context=context;
+        this.context= context;
     }
 
     public MuaSanPham(@NonNull Context context, int themeResId, SanPham sp) {
         super(context, themeResId);
         this.sp=sp;
-        this.context=context;
+        this.context= context;
     }
 
     @Override
@@ -123,7 +123,7 @@ public class MuaSanPham extends Dialog {
                      jsonbody.put("tenkhachhang",tenkhachhang);
                      jsonbody.put("donhang",donhang);
                      final String requestbody =jsonbody.toString();
-                     StringRequest request =new StringRequest(Request.Method.POST, APIs.api_send_mail, new Response.Listener<String>() {
+                     final StringRequest request =new StringRequest(Request.Method.POST, APIs.api_send_mail, new Response.Listener<String>() {
                          @Override
                          public void onResponse(String response) {
                              Log.i("resvo", response);
@@ -131,33 +131,45 @@ public class MuaSanPham extends Dialog {
                      }, new Response.ErrorListener() {
                          @Override
                          public void onErrorResponse(VolleyError error) {
-                             dialog.cancel();
-                             Toast.makeText(context, "Gửi thất bại vui lòng thử lại", Toast.LENGTH_SHORT).show();
                              Log.e("errorvo", error.toString());
+                             dialog.cancel();
+                             //Toast.makeText(context, "Gửi thất bại vui lòng thử lại", Toast.LENGTH_SHORT).show();
                          }
                      }){
                          @Override
                          public String getBodyContentType() {
+                             Log.e("getBodyConten","boddyconten");
                              return "application/json; charset=utf-8";
                          }
 
                          @Override
                          public byte[] getBody() throws AuthFailureError {
                              try {
-                                 return requestbody == null ? null : requestbody.getBytes("utf-8");
+                               //  Log.e("getbody","getbody");
+                                 if(requestbody==null){
+                                     Log.e("requestbody","null");
+                                     return null;
+                                 }
+                                 else {
+                                     Log.e("requestbody","utf-8");
+                                     return requestbody.getBytes("utf-8");
+                                 }
+                                 //return requestbody == null ? null : requestbody.getBytes("utf-8");
                              } catch (UnsupportedEncodingException uee) {
                                  VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", requestbody, "utf-8");
+                                 Log.e("getbody","null");
                                  return null;
                              }
                          }
 
                          @Override
                          protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                             Log.e("report","da nhay vao day");
                              dialog.cancel();
-                             String responseString = "";
+                             String responseString = "1";
                              if (response != null) {
                                  responseString = String.valueOf(response.statusCode);
-
+                                 Toast.makeText(context, "Gửi đơn hàng thành công", Toast.LENGTH_SHORT).show();
                                  Log.e("repont",responseString);
                              }
                              return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
@@ -166,7 +178,8 @@ public class MuaSanPham extends Dialog {
                          @Override
                          protected VolleyError parseNetworkError(VolleyError volleyError) {
                              dialog.cancel();
-                             Toast.makeText(context,"Gửi thất bại vui lòng thử lại!",Toast.LENGTH_SHORT).show();
+                             Log.e("netparsse","Loi m...");
+                            // Toast.makeText(context,"Gửi thất bại vui lòng thử lại!",Toast.LENGTH_SHORT).show();
                              return volleyError;
                          }
                      };
