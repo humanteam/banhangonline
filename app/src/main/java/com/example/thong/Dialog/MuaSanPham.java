@@ -40,12 +40,11 @@ import java.util.Map;
 public class MuaSanPham extends Dialog {
 
 
-
+    Dialog dialog;
     EditText edt_khachhang,edt_sdt,edt_diachi,edt_soluong;
     TextView txt_tenmathang,txt_dongia,txt_thanhtien,txt_xacnhan;
     SanPham sp;
     Activity context;
-    ProgressDialog dialog;
     public MuaSanPham(@NonNull Context context, int themeResId, SanPham sp) {
         super(context, themeResId);
         this.sp=sp;
@@ -98,9 +97,6 @@ public class MuaSanPham extends Dialog {
                  Toast.makeText(context, "Đơn hàng vượt quá số lượng cho phép.Nhập số lượng <=100 sản phẩm", Toast.LENGTH_SHORT).show();
              }
              else{
-                 dialog.setTitle("Đang tải");
-                 dialog.setCanceledOnTouchOutside(false);
-                 dialog.setCancelable(false);
                  dialog.show();
                  try {
                      String donhang="Tên khách hàng: "+tenkhachhang+"\n"+
@@ -124,6 +120,7 @@ public class MuaSanPham extends Dialog {
                          @Override
                          public void onErrorResponse(VolleyError error) {
                              dialog.cancel();
+                             Toast.makeText(context, "Gửi thất bại vui lòng thử lại", Toast.LENGTH_SHORT).show();
                              Log.e("errorvo", error.toString());
                          }
                      }){
@@ -144,19 +141,23 @@ public class MuaSanPham extends Dialog {
 
                          @Override
                          protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                             dialog.cancel();
                              String responseString = "";
                              if (response != null) {
                                  responseString = String.valueOf(response.statusCode);
                                  // can get more details such as response.headers
                                  Log.e("repont",responseString);
                              }
-                             dialog.cancel();
+                             else {
+                                 Toast.makeText(context,"Gửi thất bại vui lòng thử lại!",Toast.LENGTH_SHORT).show();
+                             }
                              return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
                          }
 
                          @Override
                          protected VolleyError parseNetworkError(VolleyError volleyError) {
                              dialog.cancel();
+                             Toast.makeText(context,"Gửi thất bại vui lòng thử lại!",Toast.LENGTH_SHORT).show();
                              return volleyError;
                          }
                      };
@@ -198,7 +199,10 @@ public class MuaSanPham extends Dialog {
     }
 
     private void addControlls() {
-        dialog=new ProgressDialog(context);
+        dialog=new Dialog(context);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.progress);
         edt_khachhang=findViewById(R.id.edt_khachhang);
         edt_sdt=findViewById(R.id.edt_sdt);
         edt_diachi=findViewById(R.id.edt_diachi);
