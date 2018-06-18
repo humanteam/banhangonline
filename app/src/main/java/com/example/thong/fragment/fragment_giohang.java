@@ -36,7 +36,7 @@ public class fragment_giohang extends Fragment {
         view =inflater.inflate(R.layout.fragment_giohang,container,false);
         getData();
         recyclerView=view.findViewById(R.id.list_giohang);
-        GridLayoutManager gridLayoutManager =new GridLayoutManager(getActivity(),2);
+        GridLayoutManager gridLayoutManager =new GridLayoutManager(getActivity(),1);
         recyclerView.setLayoutManager(gridLayoutManager);
         adapter=new Adapter_GioHang(dsgh);
         recyclerView.setAdapter(adapter);

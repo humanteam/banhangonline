@@ -36,6 +36,7 @@ public class Adapter_GioHang extends RecyclerView.Adapter<Adapter_GioHang.ViewHo
         Picasso.with(holder.itemView.getContext()).load(dsgh.get(position).getAnh()).error(R.drawable.mun).into(holder.img_giohang);
         holder.txttensp.setText(dsgh.get(position).getTensp().toString());
         holder.btnGia.setText(dsgh.get(position).getGia());
+        holder.txt_soluongiohang.setText(dsgh.get(position).getSoluong());
         int tt =Integer.parseInt(dsgh.get(position).getTrangthai());
         if(tt==0){
             holder.txttrangthai.setText("Chưa đặt hàng");
@@ -54,9 +55,10 @@ public class Adapter_GioHang extends RecyclerView.Adapter<Adapter_GioHang.ViewHo
 
         ImageView img_giohang;
         Button btnMuagiohang,btnXoagiohang,btnGia;
-        TextView txttensp,txttrangthai;
+        TextView txttensp,txttrangthai,txt_soluongiohang;
         public ViewHolder(View itemView) {
             super(itemView);
+            txt_soluongiohang=itemView.findViewById(R.id.txt_soluonggiohang);
             img_giohang=itemView.findViewById(R.id.img_giohang);
             btnMuagiohang=itemView.findViewById(R.id.btn_muagiohang);
             btnGia=itemView.findViewById(R.id.txt_giagiohang);
