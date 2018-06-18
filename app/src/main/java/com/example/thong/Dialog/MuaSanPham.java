@@ -3,7 +3,10 @@ package com.example.thong.Dialog;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.Editable;
@@ -40,12 +43,12 @@ import java.util.Map;
 public class MuaSanPham extends Dialog {
 
 
-
+    Dialog dialog;
     EditText edt_khachhang,edt_sdt,edt_diachi,edt_soluong;
     TextView txt_tenmathang,txt_dongia,txt_thanhtien,txt_xacnhan;
     SanPham sp;
+    SQLiteDatabase database;
     Activity context;
-    ProgressDialog dialog;
     public MuaSanPham(@NonNull Context context, int themeResId, SanPham sp) {
         super(context, themeResId);
         this.sp=sp;
@@ -98,9 +101,6 @@ public class MuaSanPham extends Dialog {
                  Toast.makeText(context, "Đơn hàng vượt quá số lượng cho phép.Nhập số lượng <=100 sản phẩm", Toast.LENGTH_SHORT).show();
              }
              else{
-                 dialog.setTitle("Đang tải");
-                 dialog.setCanceledOnTouchOutside(false);
-                 dialog.setCancelable(false);
                  dialog.show();
                  try {
                      String donhang="Tên khách hàng: "+tenkhachhang+"\n"+
@@ -124,6 +124,7 @@ public class MuaSanPham extends Dialog {
                          @Override
                          public void onErrorResponse(VolleyError error) {
                              dialog.cancel();
+                             Toast.makeText(context, "Gửi thất bại vui lòng thử lại", Toast.LENGTH_SHORT).show();
                              Log.e("errorvo", error.toString());
                          }
                      }){
@@ -144,19 +145,52 @@ public class MuaSanPham extends Dialog {
 
                          @Override
                          protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                             dialog.cancel();
                              String responseString = "";
                              if (response != null) {
                                  responseString = String.valueOf(response.statusCode);
-                                 // can get more details such as response.headers
+                                 if(responseString.equalsIgnoreCase("200")){
+                                     database=context.openOrCreateDatabase(APIs.database_name,Context.MODE_PRIVATE,null);
+                                     Cursor cursor =database.rawQuery("SELECT Id,SoLuong FROM GioHang WHERE MaSP="+sp.getMasp(),null);
+                                     if(cursor.moveToFirst()){
+                                         //Toast.makeText(holder.itemView.getContext(), "Đã tồn tại sản phẩm trong giỏ hàng", Toast.LENGTH_SHORT)
+                                         // .show();
+                                         int soluong=Integer.parseInt(cursor.getString(1));
+                                         soluong+=Integer.parseInt(edt_soluong.getText().toString());
+                                         ContentValues contentValues =new ContentValues();
+                                         contentValues.put("SoLuong",soluong+"");
+                                         contentValues.put("ThanhTien",thanhtien(soluong+"",sp.getGia()+""));
+                                         contentValues.put("TrangThai",1);
+                                         database.update("GioHang",contentValues,"MaSP="+sp.getMasp(),null);
+                                     }
+                                     else {
+                                         ContentValues contentValues =new ContentValues();
+                                         contentValues.put("MaSP",sp.getMasp());
+                                         contentValues.put("TenSP",sp.getTensp());
+                                         contentValues.put("Anh",sp.getAnh());
+                                         contentValues.put("ChiTiet",sp.getChitiet());
+                                         contentValues.put("MaTheLoai",sp.getMatheloai());
+                                         contentValues.put("Gia",sp.getGia());
+                                         contentValues.put("SoLuong",edt_soluong.getText().toString());
+                                         contentValues.put("ThanhTien",sp.getGia());
+                                         contentValues.put("TrangThai",1);
+                                         database.insert("GioHang",null,contentValues);
+                                     }
+
+
+                                 }
                                  Log.e("repont",responseString);
                              }
-                             dialog.cancel();
+                             else {
+                                 Toast.makeText(context,"Gửi thất bại vui lòng thử lại!",Toast.LENGTH_SHORT).show();
+                             }
                              return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
                          }
 
                          @Override
                          protected VolleyError parseNetworkError(VolleyError volleyError) {
                              dialog.cancel();
+                             Toast.makeText(context,"Gửi thất bại vui lòng thử lại!",Toast.LENGTH_SHORT).show();
                              return volleyError;
                          }
                      };
@@ -193,12 +227,25 @@ public class MuaSanPham extends Dialog {
      });
     }
 
+
+    private String thanhtien(String soluong,String dongia){
+        double giamoi =Double.parseDouble(dongia.substring(0,dongia.length()-5));
+        double tinhtien=giamoi*Double.parseDouble(soluong);
+        String duatienlenmanhinh=tinhtien+"000";
+        String sotienmoi=duatienlenmanhinh.substring(0,(duatienlenmanhinh.indexOf("."))-1)+duatienlenmanhinh.substring((duatienlenmanhinh.indexOf("."))+1,duatienlenmanhinh.length());
+        Log.e("sotiendatabase",sotienmoi);
+        return sotienmoi;
+    }
+
     private double tinhtien(double gia,double soluong){
         return gia*soluong;
     }
 
     private void addControlls() {
-        dialog=new ProgressDialog(context);
+        dialog=new Dialog(context);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.progress);
         edt_khachhang=findViewById(R.id.edt_khachhang);
         edt_sdt=findViewById(R.id.edt_sdt);
         edt_diachi=findViewById(R.id.edt_diachi);

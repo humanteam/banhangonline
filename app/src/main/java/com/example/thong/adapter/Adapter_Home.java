@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,9 +65,17 @@ public class Adapter_Home extends RecyclerView.Adapter<Adapter_Home.ViewHolder> 
             @Override
             public void onClick(View v) {
                 database=holder.itemView.getContext().openOrCreateDatabase(APIs.database_name, Context.MODE_PRIVATE,null);
-                Cursor cursor =database.rawQuery("SELECT Id FROM GioHang WHERE MaSP="+sp.getMasp(),null);
+                Cursor cursor =database.rawQuery("SELECT Id,SoLuong FROM GioHang WHERE MaSP="+sp.getMasp(),null);
                 if(cursor.moveToFirst()){
-                    Toast.makeText(holder.itemView.getContext(), "Đã tồn tại sản phẩm trong giỏ hàng", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(holder.itemView.getContext(), "Đã tồn tại sản phẩm trong giỏ hàng", Toast.LENGTH_SHORT)
+                    // .show();
+                    int soluong=Integer.parseInt(cursor.getString(1));
+                    soluong+=1;
+                    ContentValues contentValues =new ContentValues();
+                    contentValues.put("SoLuong",soluong+"");
+                    contentValues.put("ThanhTien",thanhtien(soluong+"",sp.getGia()+""));
+                    database.update("GioHang",contentValues,"MaSP="+sp.getMasp(),null);
+                    Toast.makeText(holder.itemView.getContext(), "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
                 }
                 else {
                     ContentValues contentValues =new ContentValues();
@@ -117,5 +126,14 @@ public class Adapter_Home extends RecyclerView.Adapter<Adapter_Home.ViewHolder> 
             txtgia=itemView.findViewById(R.id.btngia);
 
         }
+    }
+
+    private String thanhtien(String soluong,String dongia){
+        double giamoi =Double.parseDouble(dongia.substring(0,dongia.length()-5));
+        double tinhtien=giamoi*Double.parseDouble(soluong);
+        String duatienlenmanhinh=tinhtien+"000";
+        String sotienmoi=duatienlenmanhinh.substring(0,(duatienlenmanhinh.indexOf("."))-1)+duatienlenmanhinh.substring((duatienlenmanhinh.indexOf("."))+1,duatienlenmanhinh.length());
+        Log.e("sotiendatabase",sotienmoi);
+        return sotienmoi;
     }
 }
