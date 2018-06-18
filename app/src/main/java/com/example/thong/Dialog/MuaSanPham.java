@@ -48,11 +48,19 @@ public class MuaSanPham extends Dialog {
     TextView txt_tenmathang,txt_dongia,txt_thanhtien,txt_xacnhan;
     SanPham sp;
     SQLiteDatabase database;
-    Activity context;
+    Context context;
+    int soluong=1;
+    public MuaSanPham(@NonNull Context context, int themeResId,SanPham sp ,int soluong) {
+        super(context, themeResId);
+        this.sp=sp;
+        this.soluong=soluong;
+        this.context=context;
+    }
+
     public MuaSanPham(@NonNull Context context, int themeResId, SanPham sp) {
         super(context, themeResId);
         this.sp=sp;
-        this.context= (Activity) context;
+        this.context=context;
     }
 
     @Override
@@ -149,40 +157,8 @@ public class MuaSanPham extends Dialog {
                              String responseString = "";
                              if (response != null) {
                                  responseString = String.valueOf(response.statusCode);
-                                 if(responseString.equalsIgnoreCase("200")){
-                                     database=context.openOrCreateDatabase(APIs.database_name,Context.MODE_PRIVATE,null);
-                                     Cursor cursor =database.rawQuery("SELECT Id,SoLuong FROM GioHang WHERE MaSP="+sp.getMasp(),null);
-                                     if(cursor.moveToFirst()){
-                                         //Toast.makeText(holder.itemView.getContext(), "Đã tồn tại sản phẩm trong giỏ hàng", Toast.LENGTH_SHORT)
-                                         // .show();
-                                         int soluong=Integer.parseInt(cursor.getString(1));
-                                         soluong+=Integer.parseInt(edt_soluong.getText().toString());
-                                         ContentValues contentValues =new ContentValues();
-                                         contentValues.put("SoLuong",soluong+"");
-                                         contentValues.put("ThanhTien",thanhtien(soluong+"",sp.getGia()+""));
-                                         contentValues.put("TrangThai",1);
-                                         database.update("GioHang",contentValues,"MaSP="+sp.getMasp(),null);
-                                     }
-                                     else {
-                                         ContentValues contentValues =new ContentValues();
-                                         contentValues.put("MaSP",sp.getMasp());
-                                         contentValues.put("TenSP",sp.getTensp());
-                                         contentValues.put("Anh",sp.getAnh());
-                                         contentValues.put("ChiTiet",sp.getChitiet());
-                                         contentValues.put("MaTheLoai",sp.getMatheloai());
-                                         contentValues.put("Gia",sp.getGia());
-                                         contentValues.put("SoLuong",edt_soluong.getText().toString());
-                                         contentValues.put("ThanhTien",sp.getGia());
-                                         contentValues.put("TrangThai",1);
-                                         database.insert("GioHang",null,contentValues);
-                                     }
 
-
-                                 }
                                  Log.e("repont",responseString);
-                             }
-                             else {
-                                 Toast.makeText(context,"Gửi thất bại vui lòng thử lại!",Toast.LENGTH_SHORT).show();
                              }
                              return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
                          }
