@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,74 +9,37 @@
     android:background="#ffffff"
     android:orientation="vertical">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/constraintLayout"
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/admod"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
-
-        <RelativeLayout
-            android:id="@+id/RelativeLayout1"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/timkiem_border">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="50dp"
-                android:layout_marginRight="50dp">
-
-                <EditText
-                    android:id="@+id/edtSeach3"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@android:color/transparent"
-                    android:cursorVisible="false"
-                    android:ems="10"
-                    android:hint="@string/nh_p_t_c_n_t_m_ki_m"
-                    android:inputType="text"
-                    android:padding="5dp"
-                    android:textColor="#f0020202"
-                    android:textColorHint="#e0484444"
-                    android:textSize="20sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true">
-
-                <ImageView
-                    android:id="@+id/im_timkiem"
-                    android:layout_width="50dp"
-                    android:background="@drawable/timkiem_border"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/seach"
-                    android:src="@android:drawable/ic_menu_search" />
-            </LinearLayout>
-
-        </RelativeLayout>
-    </android.support.constraint.ConstraintLayout>
-
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintTop_toTopOf="parent"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-5317078946898434/5697945822">
+    </com.google.android.gms.ads.AdView>
 
     <LinearLayout
-        android:weightSum="1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
+        android:weightSum="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+        app:layout_constraintTop_toBottomOf="@+id/admod"
+        app:layout_constraintVertical_bias="0.0">
 
         <FrameLayout
-            android:layout_weight="1"
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_weight="1"
             app:layout_constraintBottom_toTopOf="@+id/ntb"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

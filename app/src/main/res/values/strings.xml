@@ -8,4 +8,5 @@
     <string name="phone_empty_message">Không thể để trống số điện thoại.!</string>
     <string name="invalid_no_message">Không thể thực hiện.!</string>
     <string name="call_permission_denied_message">Call permission denied</string>
+    <string name="id_banner">ca-app-pub-5317078946898434/5697945822</string>
 </resources>

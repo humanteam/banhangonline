@@ -1,31 +1,17 @@
 package com.example.thong.banhangonline;
-
-import android.Manifest;
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
-import android.net.Uri;
-import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import android.telecom.Call;
 import android.util.Log;
-import android.view.View;
-import android.view.WindowManager;
 
 import android.widget.Toast;
-
 
 import com.example.thong.APIs;
 import com.example.thong.fragment.fragment_them;
@@ -34,14 +20,20 @@ import com.example.thong.fragment.fragment_giohang;
 import com.example.thong.fragment.fragment_home;
 import com.example.thong.fragment.fragment_mypham;
 import com.example.thong.fragment.fragment_toc;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import devlight.io.library.ntb.NavigationTabBar;
 
 public class MainActivity extends AppCompatActivity {
 
+    AdView adView;
     Database database;
     FragmentManager manager =getFragmentManager();
     NavigationTabBar navigationTabBar;
@@ -52,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MobileAds.initialize(this, APIs.admod_id);
         database =new Database(this, APIs.database_name,null,1);
         database.create_TB_GioHang();
         addData();
@@ -101,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void addControlls() {
 
+        adView=findViewById(R.id.admod);
+        AdRequest request =new AdRequest.Builder().build();
+        adView.loadAd(request);
         navigationTabBar =findViewById(R.id.ntb);
         navigationTabBar.setModels(listmodel);
         navigationTabBar.setModelIndex(0);
