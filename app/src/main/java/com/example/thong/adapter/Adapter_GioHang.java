@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.thong.APIs;
+import com.example.thong.Dialog.MuaSanPham;
 import com.example.thong.banhangonline.R;
 import com.example.thong.model.GioHang;
+import com.example.thong.model.SanPham;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -55,6 +58,21 @@ public class Adapter_GioHang extends RecyclerView.Adapter<Adapter_GioHang.ViewHo
                 database.delete("GioHang","MaSP="+dsgh.get(position).getMasp(),null);
                 dsgh.remove(position);
                 notifyDataSetChanged();
+            }
+        });
+        holder.btnMuagiohang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SanPham sp =new SanPham();
+                sp.setMasp(dsgh.get(position).getMasp());
+                sp.setTensp(dsgh.get(position).getTensp());
+                sp.setGia(dsgh.get(position).getGia());
+                sp.setChitiet(dsgh.get(position).getChitiet());
+                sp.setAnh(dsgh.get(position).getAnh());
+                sp.setMatheloai(dsgh.get(position).getMatheloai());
+                MuaSanPham mua =new MuaSanPham(holder.itemView.getContext(),R.style.myDialog,sp,Integer.parseInt(dsgh.get(position).getSoluong()),dsgh.get(position).getThanhtien());
+                mua.getWindow().setGravity(Gravity.BOTTOM);
+                mua.show();
             }
         });
     }

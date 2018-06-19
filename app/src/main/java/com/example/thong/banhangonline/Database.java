@@ -37,7 +37,7 @@ public class Database extends SQLiteOpenHelper {
     }
     public void create_TB_GioHang(){
         String sql ="CREATE TABLE IF NOT EXISTS GioHang (Id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "MaSP INTEGER,TenSP NVARCHAR(200),Anh TEXT ,ChiTiet TEXT ,MaTheLoai INTEGER,Gia TEXT,SoLuong INTEGER,ThanhTien               FLOAT,TrangThai INTEGER)";
+                "MaSP INTEGER,TenSP NVARCHAR(200),Anh TEXT ,ChiTiet TEXT ,MaTheLoai INTEGER,Gia TEXT,SoLuong INTEGER,ThanhTien               TEXT,TrangThai INTEGER)";
         SQLiteDatabase database =getWritableDatabase();
         database.execSQL(sql);
         Log.e("database","da tao table thanh cong");

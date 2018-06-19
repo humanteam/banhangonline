@@ -26,19 +26,19 @@
                 android:layout_marginRight="50dp">
 
                 <EditText
-                    android:cursorVisible="false"
                     android:id="@+id/edtSeach3"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@android:color/transparent"
+                    android:cursorVisible="false"
                     android:ems="10"
                     android:hint="@string/nh_p_t_c_n_t_m_ki_m"
                     android:inputType="text"
                     android:padding="5dp"
                     android:textColor="#f0020202"
                     android:textColorHint="#e0484444"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout

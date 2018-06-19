@@ -50,11 +50,13 @@ public class MuaSanPham extends Dialog {
     SQLiteDatabase database;
     Activity context;
     int soluong=1;
-    public MuaSanPham(@NonNull Context context, int themeResId,SanPham sp ,int soluong) {
+    String monney="";
+    public MuaSanPham(@NonNull Context context, int themeResId,SanPham sp ,int soluong,String monney) {
         super(context, themeResId);
         this.sp=sp;
         this.soluong=soluong;
         this.context= (Activity) context;
+        this.monney=monney;
     }
 
     public MuaSanPham(@NonNull Context context, int themeResId, SanPham sp) {
@@ -173,15 +175,19 @@ public class MuaSanPham extends Dialog {
                                      database=context.openOrCreateDatabase(APIs.database_name, Context.MODE_PRIVATE,null);
                                      Cursor cursor =database.rawQuery("SELECT Id,SoLuong FROM GioHang WHERE MaSP="+sp.getMasp(),null);
                                      if(cursor.moveToFirst()){
-                                         //Toast.makeText(holder.itemView.getContext(), "Đã tồn tại sản phẩm trong giỏ hàng", Toast.LENGTH_SHORT)
-                                         // .show();
                                          int soluong=Integer.parseInt(cursor.getString(1));
-                                         soluong+=Integer.parseInt(edt_soluong.getText().toString());
                                          ContentValues contentValues =new ContentValues();
-                                         contentValues.put("SoLuong",soluong+"");
-                                         contentValues.put("ThanhTien",thanhtien(soluong+"",sp.getGia()+""));
-                                         contentValues.put("TrangThai",1);
-                                         database.update("GioHang",contentValues,"MaSP="+sp.getMasp(),null);
+                                         if(monney.length()>0){
+                                             contentValues.put("TrangThai",1);
+                                             database.update("GioHang",contentValues,"MaSP="+sp.getMasp(),null);
+                                         }
+                                         else {
+                                             soluong+=Integer.parseInt(edt_soluong.getText().toString());
+                                             contentValues.put("SoLuong",soluong+"");
+                                             contentValues.put("ThanhTien",thanhtien(soluong+"",sp.getGia()+""));
+                                             contentValues.put("TrangThai",1);
+                                             database.update("GioHang",contentValues,"MaSP="+sp.getMasp(),null);
+                                         }
                                      }
                                      else {
                                          ContentValues contentValues =new ContentValues();
@@ -275,5 +281,9 @@ public class MuaSanPham extends Dialog {
         txt_tenmathang.setText(sp.getTensp());
         txt_dongia.setText(sp.getGia());
         txt_thanhtien.setText(sp.getGia());
+        edt_soluong.setText(soluong+"");
+        if(monney.length()>0){
+            txt_thanhtien.setText(monney);
+        }
     }
 }
