@@ -13,4 +13,5 @@
     <string name="action_play_next">Mua</string>
     <string name="backdrop_title">Shopping Online</string>
     <string name="backdrop_subtitle">Chúng tôi không chỉ trao cho bạn giải pháp, mà chúng tôi còn trao cho bạn niềm tin về sản phẩm </string>
+    <string name="appbar_scrolling_view_behavior" />
 </resources>

@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,6 +22,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.thong.APIs;
 import com.example.thong.adapter.Adapter_Home;
+import com.example.thong.adapter.AlbumsAdapter;
 import com.example.thong.banhangonline.R;
 import com.example.thong.model.SanPham;
 
@@ -35,7 +37,7 @@ import java.util.Map;
 public class fragment_home extends Fragment {
 
     RecyclerView list;
-    Adapter_Home adapter;
+    AlbumsAdapter adapter;
     ArrayList<SanPham>dssp =new ArrayList<>();
     int lastpositon=0;
     boolean is_loading =false;
@@ -58,9 +60,10 @@ public class fragment_home extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void addControlls() {
         list=view.findViewById(R.id.list_home);
-        LinearLayoutManager manager =new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
-        list.setLayoutManager(manager);
-        adapter=new Adapter_Home(dssp);
+       // LinearLayoutManager manager =new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+        GridLayoutManager manager1 =new GridLayoutManager(getActivity(),2);
+        list.setLayoutManager(manager1);
+        adapter=new AlbumsAdapter(getActivity(),dssp);
         list.setAdapter(adapter);
         Volley.newRequestQueue(getActivity()).add(request);
     }
