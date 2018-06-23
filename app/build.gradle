@@ -20,6 +20,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.android.gms:play-services-ads:15.0.0'
     implementation('devlight.io:navigationtabbar:1.2.5') {
         exclude group: 'com.android.support'
         exclude module: 'appcompat-v7'

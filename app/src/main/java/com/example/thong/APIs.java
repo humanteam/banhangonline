@@ -7,4 +7,6 @@ public class APIs {
     public static String api_thietbi="http://192.168.0.100/api/sanpham/3";//trả về danh sách thiết bị
     public static String database_name="banhangonline.sqlite";//Ten databbase
     public static String api_send_mail="http://192.168.0.100//WebServices/AuthenCation.asmx/send_mail";//Send mail
+    public static String admod_id="ca-app-pub-5317078946898434~3053253574";
+    public static String banner_id="ca-app-pub-5317078946898434/5697945822";
 }
