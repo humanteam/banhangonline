@@ -102,6 +102,8 @@
         <WebView
             android:id="@+id/webview_chitiet"
             android:layout_width="match_parent"
+            android:transformPivotX="5dp"
+            android:transformPivotY="5dp"
             android:layout_height="match_parent"
             android:background="#fff">
         </WebView>

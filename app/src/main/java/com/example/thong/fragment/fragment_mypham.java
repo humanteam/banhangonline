@@ -3,6 +3,7 @@ package com.example.thong.fragment;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,6 +19,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.thong.APIs;
 import com.example.thong.adapter.Adapter_Home;
+import com.example.thong.adapter.AlbumsAdapter;
 import com.example.thong.banhangonline.R;
 import com.example.thong.model.SanPham;
 
@@ -32,7 +34,7 @@ import java.util.Map;
 
 public class fragment_mypham extends Fragment {
 
-    Adapter_Home adapter;
+    AlbumsAdapter adapter;
     ArrayList<SanPham> dssp=new ArrayList<>();
     View view;
     RecyclerView recyclerView;
@@ -53,9 +55,9 @@ public class fragment_mypham extends Fragment {
 
     private void addControlls(View view) {
         recyclerView=view.findViewById(R.id.list_mypham);
-        LinearLayoutManager manager =new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+        GridLayoutManager manager=new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(manager);
-        adapter =new Adapter_Home(dssp);
+        adapter =new AlbumsAdapter(getActivity(),dssp);
         recyclerView.setAdapter(adapter);
         Volley.newRequestQueue(getActivity()).add(request);
     }
