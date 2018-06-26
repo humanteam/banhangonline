@@ -96,8 +96,6 @@ public class MainActivity extends AppCompatActivity {
 
         adView=findViewById(R.id.admod);
         AdRequest request =new AdRequest.Builder().build();
-        AdSize size =new AdSize(300,30);
-        adView.setAdSize(size);
         adView.loadAd(request);
         navigationTabBar =findViewById(R.id.ntb);
         navigationTabBar.setModels(listmodel);

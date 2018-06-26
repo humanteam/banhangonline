@@ -2,12 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_weight="1"
     android:background="@drawable/bgthem"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="400dp"
         android:fillViewport="true"
         android:scrollbars="vertical">
 
@@ -18,7 +20,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="360dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:orientation="horizontal"
@@ -114,6 +116,39 @@
                         android:singleLine="false"
                         android:text="Hàng Chuối 2, Hai Bà Trưng, Hà Nội"
                         android:textColor="#000" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/button_border_cua_hang"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:singleLine="false"
+                        android:text="8C Ngõ Huế, Hai Bà trưng, Hà Nội"
+                        android:textColor="#000" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/button_border_cua_hang"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:singleLine="false"
+                        android:text="1B Sài Đồng, Long Biên, Gia Lâm, Hà Nội"
+                        android:textColor="#000" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/button_border_cua_hang"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="10dp"
+                        android:singleLine="false"
+                        android:text="239 Kim Mã, Ba Đình, Hà Nội"
+                        android:textColor="#000" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -168,7 +203,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/button_border_cua_hang"
                         android:gravity="center"
-                        android:text="0983992895"
+                        android:text="01632211771"
                         android:textColor="#000" />
 
                     <TextView
@@ -178,7 +213,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/button_border_cua_hang"
                         android:gravity="center"
-                        android:text="0964118267"
+                        android:text="01699338126"
                         android:textColor="#000" />
 
                     <TextView
@@ -188,7 +223,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/button_border_cua_hang"
                         android:gravity="center"
-                        android:text="0982536853"
+                        android:text="0977673866"
                         android:textColor="#000" />
 
                     <TextView
@@ -198,68 +233,99 @@
                         android:layout_marginTop="10dp"
                         android:background="@drawable/button_border_cua_hang"
                         android:gravity="center"
+                        android:text="01659954485"
+                        android:textColor="#000" />
+
+                    <TextView
+                        android:id="@+id/a8"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/button_border_cua_hang"
+                        android:gravity="center"
+                        android:text="0982536853"
+                        android:textColor="#000" />
+
+                    <TextView
+                        android:id="@+id/a9"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/button_border_cua_hang"
+                        android:gravity="center"
                         android:text="0983992895"
                         android:textColor="#000" />
+
+                    <TextView
+                        android:id="@+id/a10"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/button_border_cua_hang"
+                        android:gravity="center"
+                        android:text="0974182105"
+                        android:textColor="#000" />
                 </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/activityMain_mobileNoEt"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:hint="Enter Phone Number"
-                    android:inputType="phone"
-                    android:textColor="#000"
-                    android:textColorHint="#606060" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/btn_launch_sms"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_weight="1"
-                        android:textColor="#000"
-                        android:background="@drawable/button_border_goc"
-                        android:text="Gửi SMS" />
-
-                    <Button
-                        android:id="@+id/btn_launch_call"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:textColor="#000"
-                        android:layout_weight="1"
-                        android:background="@drawable/button_border_goc"
-                        android:text="Chuyển tới cuộc gọi" />
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/activityMain_callBt"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
-                    android:textColor="#000"
-                    android:background="@drawable/button_border_goc"
-                    android:text="@string/call"
-                    android:textAllCaps="false"
-                    android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/activityMain_mobileNoEt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:hint="Enter Phone Number"
+            android:inputType="phone"
+            android:textColor="#000"
+            android:textColorHint="#606060" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_launch_sms"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_border_goc"
+                android:text="Gửi SMS"
+                android:textColor="#000" />
+
+            <Button
+                android:id="@+id/btn_launch_call"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_border_goc"
+                android:text="Chuyển tới cuộc gọi"
+                android:textColor="#000" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/activityMain_callBt"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_border_goc"
+            android:text="@string/call"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="18sp" />
+    </LinearLayout>
+
 </LinearLayout>

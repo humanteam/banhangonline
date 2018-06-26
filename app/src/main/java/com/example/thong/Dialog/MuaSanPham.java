@@ -44,8 +44,8 @@ public class MuaSanPham extends Dialog {
 
 
     Dialog dialog;
-    EditText edt_khachhang,edt_sdt,edt_diachi,edt_soluong;
-    TextView txt_tenmathang,txt_dongia,txt_thanhtien,txt_xacnhan;
+    EditText edt_khachhang, edt_sdt, edt_diachi, edt_soluong;
+    TextView txt_tenmathang, txt_dongia, txt_thanhtien, txt_xacnhan;
     SanPham sp;
     SQLiteDatabase database;
     Activity context;
@@ -241,43 +241,43 @@ public class MuaSanPham extends Dialog {
                     String sotienmoi=duatienlenmanhinh.substring(0,(duatienlenmanhinh.indexOf("."))-1)+duatienlenmanhinh.substring((duatienlenmanhinh.indexOf("."))+1,duatienlenmanhinh.length());
                      Log.e("tien",sotienmoi);
                     txt_thanhtien.setText(sotienmoi);
-                 }
-         }
+                }
+            }
 
-         @Override
-         public void afterTextChanged(Editable s) {
+            @Override
+            public void afterTextChanged(Editable s) {
 
-         }
-     });
+            }
+        });
     }
 
 
-    private String thanhtien(String soluong,String dongia){
-        double giamoi =Double.parseDouble(dongia.substring(0,dongia.length()-5));
-        double tinhtien=giamoi*Double.parseDouble(soluong);
-        String duatienlenmanhinh=tinhtien+"000";
-        String sotienmoi=duatienlenmanhinh.substring(0,(duatienlenmanhinh.indexOf("."))-1)+duatienlenmanhinh.substring((duatienlenmanhinh.indexOf("."))+1,duatienlenmanhinh.length());
-        Log.e("sotiendatabase",sotienmoi);
+    private String thanhtien(String soluong, String dongia) {
+        double giamoi = Double.parseDouble(dongia.substring(0, dongia.length() - 5));
+        double tinhtien = giamoi * Double.parseDouble(soluong);
+        String duatienlenmanhinh = tinhtien + "000";
+        String sotienmoi = duatienlenmanhinh.substring(0, (duatienlenmanhinh.indexOf(".")) - 1) + duatienlenmanhinh.substring((duatienlenmanhinh.indexOf(".")) + 1, duatienlenmanhinh.length());
+        Log.e("sotiendatabase", sotienmoi);
         return sotienmoi;
     }
 
-    private double tinhtien(double gia,double soluong){
-        return gia*soluong;
+    private double tinhtien(double gia, double soluong) {
+        return gia * soluong;
     }
 
     private void addControlls() {
-        dialog=new Dialog(context);
+        dialog = new Dialog(context);
         dialog.setCanceledOnTouchOutside(false);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.progress);
-        edt_khachhang=findViewById(R.id.edt_khachhang);
-        edt_sdt=findViewById(R.id.edt_sdt);
-        edt_diachi=findViewById(R.id.edt_diachi);
-        edt_soluong=findViewById(R.id.edt_soluong);
-        txt_tenmathang=findViewById(R.id.txt_tenmathang);
-        txt_dongia=findViewById(R.id.txt_dongia);
-        txt_thanhtien=findViewById(R.id.txt_thanhtien);
-        txt_xacnhan=findViewById(R.id.txt_xacnhan);
+        edt_khachhang = findViewById(R.id.edt_khachhang);
+        edt_sdt = findViewById(R.id.edt_sdt);
+        edt_diachi = findViewById(R.id.edt_diachi);
+        edt_soluong = findViewById(R.id.edt_soluong);
+        txt_tenmathang = findViewById(R.id.txt_tenmathang);
+        txt_dongia = findViewById(R.id.txt_dongia);
+        txt_thanhtien = findViewById(R.id.txt_thanhtien);
+        txt_xacnhan = findViewById(R.id.txt_xacnhan);
         txt_tenmathang.setText(sp.getTensp());
         txt_dongia.setText(sp.getGia());
         txt_thanhtien.setText(sp.getGia());

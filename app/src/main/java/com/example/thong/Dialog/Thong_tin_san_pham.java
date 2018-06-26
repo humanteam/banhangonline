@@ -14,6 +14,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -106,7 +107,8 @@ public class Thong_tin_san_pham extends Dialog{
          Picasso.with(getContext()).load(sp.getAnh()).error(R.drawable.mun).into(imghinhanh);
          btngia.setText(sp.getGia());
          webViewchitiet=findViewById(R.id.webview_chitiet);
-         webViewchitiet.loadData(sp.getChitiet(),"text/html","UTF-8");
+        // webViewchitiet.loadData(sp.getChitiet(),"text/html","UTF-8");
+         webViewchitiet.loadData(sp.getChitiet(), "text/html; charset=utf-8", "utf-8");
          webViewchitiet.setHorizontalScrollbarOverlay(true);
          Paint paint =new Paint();
          paint.setColor(Color.GRAY);

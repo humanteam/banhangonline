@@ -9,4 +9,9 @@
     <string name="invalid_no_message">Không thể thực hiện.!</string>
     <string name="call_permission_denied_message">Call permission denied</string>
     <string name="id_banner">ca-app-pub-5317078946898434/5697945822</string>
+    <string name="action_add_favourite">Thêm vào giỏ hàng</string>
+    <string name="action_play_next">Mua</string>
+    <string name="backdrop_title">Shopping Online</string>
+    <string name="backdrop_subtitle">Chúng tôi không chỉ trao cho bạn giải pháp, mà chúng tôi còn trao cho bạn niềm tin về sản phẩm </string>
+    <string name="appbar_scrolling_view_behavior" />
 </resources>
