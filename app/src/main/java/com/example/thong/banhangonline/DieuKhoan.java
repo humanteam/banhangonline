@@ -66,21 +66,5 @@ public class DieuKhoan extends AppCompatActivity {
             editor.commit();
         }
     }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(requestCode == CALL_REQUEST)
-        {
-            if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            {
-
-            }
-            else
-            {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.call_permission_denied_message), Toast.LENGTH_SHORT).show();
-            }
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
 }
 

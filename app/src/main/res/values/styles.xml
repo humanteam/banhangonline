@@ -4,7 +4,6 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="popupMenuStyle">@style/popupMenuStyle</item>
     </style>
-
     <style name="popupMenuStyle" parent="Widget.AppCompat.PopupMenu">
         <item name="android:popupBackground">@android:color/white</item>
     </style>
@@ -17,5 +16,4 @@
         <item name = "android:backgroundDimEnabled">true</item>
         <item name = "android:windowBackground" >@drawable/bgthem</item >
     </style>
-
 </resources>
