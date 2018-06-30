@@ -11,16 +11,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-
-import com.example.thong.banhangonline.MainActivity;
 import com.example.thong.banhangonline.R;
 
 public class Cua_hang_truc_tiep extends Dialog {
@@ -109,7 +105,14 @@ public class Cua_hang_truc_tiep extends Dialog {
                 public void onClick(View view) {
 
                     if (validationCheck()) {
-                        callPhoneNumber();
+                       if(ActivityCompat.checkSelfPermission(getContext(),Manifest.permission.CALL_PHONE)==PackageManager.PERMISSION_GRANTED){
+                           Intent callIntent = new Intent(Intent.ACTION_CALL);
+                           callIntent.setData(Uri.parse("tel:" + mobileNoEt.getText().toString().trim()));
+                           getContext().startActivity(callIntent);
+                       }
+                       else{
+                           Toast.makeText(getContext(), "Please turn on Call Phone Permission !", Toast.LENGTH_SHORT).show();
+                       }
                     }
                 }
             });
@@ -117,23 +120,6 @@ public class Cua_hang_truc_tiep extends Dialog {
             ex.printStackTrace();
         }
     }
-
-    public void callPhoneNumber() {
-        try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-
-                    ActivityCompat.requestPermissions((Activity) getContext(), new String[]{Manifest.permission.CALL_PHONE}, CALL_REQUEST);
-
-                    return;
-                }
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
     @Override
     public void onBackPressed() {
         cancel();

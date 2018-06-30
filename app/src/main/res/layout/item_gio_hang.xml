@@ -69,27 +69,36 @@
                     android:layout_width="match_parent"
                     android:layout_height="70dp">
 
-                    <Button
-                        android:id="@+id/txt_giagiohang"
+                    <LinearLayout
                         android:layout_width="75dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:background="@drawable/gio_hang_boder"
-                        android:gravity="center"
-                        android:padding="5dp"
-                        android:text="Giá"
-                        android:textColor="#000" />
+                        android:layout_height="70dp">
 
-                    <TextView
-                        android:id="@+id/txt_soluonggiohang"
-                        android:layout_width="61dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.5"
-                        android:background="@drawable/gio_hang_boder"
-                        android:gravity="center"
-                        android:src="@drawable/don_hang_boder"
-                        android:text="Số lượng"
-                        android:textColor="#000" />
+                        <Button
+                            android:id="@+id/txt_giagiohang"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:background="@drawable/gio_hang_boder"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:text="Giá"
+                            android:textColor="#000" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="75dp"
+                        android:layout_height="70dp">
+
+                        <TextView
+                            android:id="@+id/txt_soluonggiohang"
+                            android:layout_width="75dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/gio_hang_boder"
+                            android:gravity="center"
+                            android:src="@drawable/don_hang_boder"
+                            android:text="Số lượng"
+                            android:textColor="#000" />
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="25dp"
@@ -124,6 +133,6 @@
 
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
+    </LinearLayout>
 </LinearLayout>
