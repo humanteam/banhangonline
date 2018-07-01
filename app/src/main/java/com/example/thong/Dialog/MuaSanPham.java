@@ -204,7 +204,7 @@ public class MuaSanPham extends Dialog {
                                      }
                                      cursor.close();
                                  }
-                                 Toast.makeText(context, "Gửi đơn hàng thành công", Toast.LENGTH_SHORT).show();
+                                 Toast.makeText(context,"Đã gửi đơn hàng thành công", Toast.LENGTH_SHORT).show();
                                  Log.e("repont",responseString);
                              }
                              return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));

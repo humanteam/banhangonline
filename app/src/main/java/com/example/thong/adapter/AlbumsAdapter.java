@@ -113,7 +113,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.MyViewHold
                             contentValues.put("SoLuong",soluong+"");
                             contentValues.put("ThanhTien",thanhtien(soluong+"",sp.getGia()+""));
                             database.update("GioHang",contentValues,"MaSP="+sp.getMasp(),null);
-                            Toast.makeText(mContext, "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, "Đã thêm 1 sản phẩm nữa vào giỏ hàng", Toast.LENGTH_SHORT).show();
                         }
                         else {
                             ContentValues contentValues =new ContentValues();

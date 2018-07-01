@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.thong.banhangonline.R;
 
 public class Cua_hang_truc_tiep extends Dialog implements View.OnClickListener {
@@ -134,47 +135,58 @@ public class Cua_hang_truc_tiep extends Dialog implements View.OnClickListener {
                         Toast.makeText(getContext(), "Please turn on Call Phone Permission !", Toast.LENGTH_SHORT).show();
                     }
                 }
-            };
+            }
+            ;
             break;
             case R.id.a1: {
                 mobileNoEt.setText(a1.getText());
-            };
+            }
+            ;
             break;
             case R.id.a2: {
                 mobileNoEt.setText(a2.getText());
-            };
+            }
+            ;
             break;
             case R.id.a3: {
                 mobileNoEt.setText(a3.getText());
-            };
+            }
+            ;
             break;
             case R.id.a4: {
                 mobileNoEt.setText(a4.getText());
-            };
+            }
+            ;
             break;
             case R.id.a5: {
                 mobileNoEt.setText(a5.getText());
-            };
+            }
+            ;
             break;
             case R.id.a6: {
                 mobileNoEt.setText(a6.getText());
-            };
+            }
+            ;
             break;
             case R.id.a7: {
                 mobileNoEt.setText(a7.getText());
-            };
+            }
+            ;
             break;
             case R.id.a8: {
                 mobileNoEt.setText(a8.getText());
-            };
+            }
+            ;
             break;
             case R.id.a9: {
                 mobileNoEt.setText(a9.getText());
-            };
+            }
+            ;
             break;
             case R.id.a10: {
                 mobileNoEt.setText(a10.getText());
-            };
+            }
+            ;
             break;
         }
     }
