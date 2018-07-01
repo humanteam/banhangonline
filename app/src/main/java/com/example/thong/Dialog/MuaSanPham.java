@@ -5,10 +5,12 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -40,7 +42,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MuaSanPham extends Dialog {
+public class MuaSanPham extends Dialog  {
 
 
     Dialog dialog;
@@ -75,6 +77,11 @@ public class MuaSanPham extends Dialog {
         getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         addControlls();
         addEvents();
+    }
+
+    @Override
+    public void cancel() {
+        super.cancel();
     }
 
     private void addEvents() {
@@ -177,17 +184,12 @@ public class MuaSanPham extends Dialog {
                                      if(cursor.moveToFirst()){
                                          int soluong=Integer.parseInt(cursor.getString(1));
                                          ContentValues contentValues =new ContentValues();
-                                         if(monney.length()>0){
-                                             contentValues.put("TrangThai",1);
-                                             database.update("GioHang",contentValues,"MaSP="+sp.getMasp(),null);
-                                         }
-                                         else {
-                                             soluong+=Integer.parseInt(edt_soluong.getText().toString());
-                                             contentValues.put("SoLuong",soluong+"");
-                                             contentValues.put("ThanhTien",thanhtien(soluong+"",sp.getGia()+""));
-                                             contentValues.put("TrangThai",1);
-                                             database.update("GioHang",contentValues,"MaSP="+sp.getMasp(),null);
-                                         }
+                                         soluong+=Integer.parseInt(edt_soluong.getText().toString());
+                                         contentValues.put("SoLuong",soluong+"");
+                                         contentValues.put("ThanhTien",thanhtien(soluong+"",sp.getGia()+""));
+                                         contentValues.put("TrangThai",1);
+                                         database.update("GioHang",contentValues,"MaSP="+sp.getMasp(),null);
+
                                      }
                                      else {
                                          ContentValues contentValues =new ContentValues();
@@ -203,9 +205,9 @@ public class MuaSanPham extends Dialog {
                                          database.insert("GioHang",null,contentValues);
                                      }
                                      cursor.close();
+                                     Toast.makeText(context, "Gửi đơn hàng thành công", Toast.LENGTH_SHORT).show();
+                                     Log.e("repont",responseString);
                                  }
-                                 Toast.makeText(context, "Gửi đơn hàng thành công", Toast.LENGTH_SHORT).show();
-                                 Log.e("repont",responseString);
                              }
                              return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
                          }
