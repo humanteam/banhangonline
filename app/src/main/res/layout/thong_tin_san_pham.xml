@@ -22,6 +22,7 @@
                 android:id="@+id/img_ttsp"
                 android:layout_width="wrap_content"
                 android:layout_height="93dp"
+                android:padding="5dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/button_border_cua_hang"
@@ -30,11 +31,11 @@
             <TextView
                 android:id="@+id/txt_tttensp"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="30.5dp"
                 android:layout_marginBottom="3dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="2dp"
                 android:background="@drawable/button_border_tensp"
                 android:gravity="center"
                 android:maxLines="2"
@@ -53,10 +54,10 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginTop="49dp"
+                android:layout_marginTop="48dp"
                 android:orientation="vertical">
 
                 <Button
@@ -83,7 +84,7 @@
                 <Button
                     android:id="@+id/btn_tt_giohang"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
+                    android:layout_height="31dp"
                     android:layout_marginTop="3dp"
                     android:background="@drawable/button_border_goc"
                     android:text="Thêm Vào Giỏ Hàng"
@@ -102,8 +103,11 @@
         <WebView
             android:id="@+id/webview_chitiet"
             android:layout_width="match_parent"
-            android:transformPivotX="5dp"
-            android:transformPivotY="5dp"
+            android:padding="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_height="match_parent"
             android:background="#fff">
         </WebView>

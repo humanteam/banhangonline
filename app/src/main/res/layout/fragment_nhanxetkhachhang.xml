@@ -63,7 +63,7 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="2dp"
                 android:layout_marginTop="10dp"
                 android:textColor="#000" />
 
@@ -71,7 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
                 android:gravity="center"
                 android:text="Nhóm Phát Triển Ứng Dụng"
                 android:textColor="#000000"
@@ -80,7 +80,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="Trương Nho Thông : 0964118267"
                 android:textColor="#000000"
@@ -89,7 +89,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="Nguyễn Thành Công : 01632211771"
                 android:textColor="#000000"
@@ -98,25 +98,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="Chu Trí Tú : 0903484596"
                 android:textColor="#000000"
                 android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/btnclickxong"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="15dp"
-                android:layout_marginTop="50dp"
-                android:background="@drawable/button_border"
-                android:contentDescription="AboutUs"
-                android:padding="5dp"
-                android:text="Xong"
-                android:textColor="#ffffff" />
 
         </LinearLayout>
     </ScrollView>

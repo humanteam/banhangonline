@@ -1,8 +1,6 @@
 package com.example.thong.fragment;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,6 +14,7 @@ import com.example.thong.Dialog.Cua_hang_truc_tiep;
 import com.example.thong.Dialog.DieuKhoanVaBanQuyen;
 import com.example.thong.Dialog.HuongDanSuDung;
 import com.example.thong.Dialog.Lien_ket_website;
+import com.example.thong.Dialog.Phan_Hoi_Ve_Admin;
 import com.example.thong.banhangonline.R;
 
 public class fragment_them extends Fragment {
@@ -61,10 +60,9 @@ public class fragment_them extends Fragment {
         txtnhanxet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager manager = getActivity().getFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.viewpager, new fragment_nhanxet());
-                transaction.commit();
+                Phan_Hoi_Ve_Admin nx = new Phan_Hoi_Ve_Admin(getActivity(),R.style.myDialog);
+                nx.getWindow().setGravity(Gravity.BOTTOM);
+                nx.show();
             }
         });
 
