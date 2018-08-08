@@ -129,3 +129,4 @@ public class fragment_home extends Fragment {
         super.onDestroy();
     }
 }
+//api_home là API

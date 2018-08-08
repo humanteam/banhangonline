@@ -37,9 +37,16 @@ public class Database extends SQLiteOpenHelper {
     }
     public void create_TB_GioHang(){
         String sql ="CREATE TABLE IF NOT EXISTS GioHang (Id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "MaSP INTEGER,TenSP NVARCHAR(200),Anh TEXT ,ChiTiet TEXT ,MaTheLoai INTEGER,Gia TEXT,SoLuong INTEGER,ThanhTien               TEXT,TrangThai INTEGER)";
+                "MaSP INTEGER,TenSP NVARCHAR(200),Anh TEXT ,ChiTiet TEXT ,MaTheLoai INTEGER,Gia TEXT,SoLuong INTEGER,ThanhTien TEXT,TrangThai INTEGER)";
         SQLiteDatabase database =getWritableDatabase();
         database.execSQL(sql);
         Log.e("database","da tao table thanh cong");
+    }
+    public void create_TB_DonHang(){
+        String sql ="CREATE TABLE IF NOT EXISTS DonHang (Id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "SoDT INTEGER,TenKH NVARCHAR(100),DiaChi TEXT ,TenSP TEXT ,soluong INTEGER,Gia TEXT,ThanhTien TEXT)";
+        SQLiteDatabase database =getWritableDatabase();
+        database.execSQL(sql);
+        Log.e("database","tạo bảng thành công");
     }
 }

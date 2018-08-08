@@ -76,7 +76,7 @@ public class Thong_tin_san_pham extends Dialog{
                   contentValues.put("SoLuong",soluong+"");
                   contentValues.put("ThanhTien",thanhtien(soluong+"",sp.getGia()+""));
                   database.update("GioHang",contentValues,"MaSP="+sp.getMasp(),null);
-                  Toast.makeText(getContext(), "Đã thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                  Toast.makeText(getContext(), "Đã thêm 1 sản phẩm vào giỏ hàng", Toast.LENGTH_SHORT).show();
               }
               else {
                   ContentValues contentValues =new ContentValues();
@@ -123,7 +123,9 @@ public class Thong_tin_san_pham extends Dialog{
         double giamoi =Double.parseDouble(dongia.substring(0,dongia.length()-5));
         double tinhtien=giamoi*Double.parseDouble(soluong);
         String duatienlenmanhinh=tinhtien+"000";
-        String sotienmoi=duatienlenmanhinh.substring(0,(duatienlenmanhinh.indexOf("."))-1)+duatienlenmanhinh.substring((duatienlenmanhinh.indexOf("."))+1,duatienlenmanhinh.length());
+        String sotienmoi=duatienlenmanhinh.substring(0,(duatienlenmanhinh.indexOf("."))-1)
+                +duatienlenmanhinh.substring((duatienlenmanhinh.indexOf("."))
+                +1,duatienlenmanhinh.length());
         Log.e("sotiendatabase",sotienmoi);
         return sotienmoi;
     }

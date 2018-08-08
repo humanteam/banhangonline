@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         MobileAds.initialize(this, APIs.admod_id);
         database = new Database(this, APIs.database_name, null, 1);
         database.create_TB_GioHang();
+        database.create_TB_DonHang();
         addData();
         if (!checkinternet()) {
             Toast.makeText(getApplicationContext(), "Please checked internet !", Toast.LENGTH_LONG).show();
