@@ -41,6 +41,7 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class MuaSanPham extends Dialog  {
 
@@ -124,10 +125,12 @@ public class MuaSanPham extends Dialog  {
                              "Địa chỉ giao hàng: "+diachi+"\n"+
                              "Số điện thoại: "+sdt+"\n"+
                              "Mã sản phẩm: "+sp.getMasp()+"\n"+
+                             "Mã Thể Loại: "+sp.getMatheloai()+"\n"+
                              "Tên sản phẩm: "+sp.getTensp()+"\n"+
                              "Đơn giá: "+sp.getGia()+"\n"+
                              "Số lượng: "+edt_soluong.getText()+"\n"+
-                             "Thành tiền: "+txt_thanhtien.getText().toString();
+                             "Thành tiền: "+txt_thanhtien.getText().toString()+" \n"+
+                             "ID Đơn hàng :"+UUID.randomUUID();
                      JSONObject  jsonbody =new JSONObject();
                      jsonbody.put("tenkhachhang",tenkhachhang);
                      jsonbody.put("donhang",donhang);
