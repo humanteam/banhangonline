@@ -22,7 +22,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.17"
                 android:layout_marginLeft="5dp"
-                android:orientation="vertical"
+                android:orientation="vertical" 
                 android:weightSum="1">
 
                 <TextView

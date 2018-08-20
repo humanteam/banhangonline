@@ -197,30 +197,6 @@ public class MuaSanPham extends Dialog {
                                             database.insert("GioHang", null, contentValues);
                                         }
                                         cursor.close();
-          //-------------------- Lưu đơn hàng khách hàng gửi vào trong db------------------------------
-                                        Cursor cursor2 = database.rawQuery("SELECT Id,SoLuong FROM DonHang WHERE SoDT=" + dh.getSdt(), null);
-                                        if (cursor2.moveToFirst()) {
-                                            int soluong = Integer.parseInt(cursor2.getString(1));
-                                            ContentValues content = new ContentValues();
-                                            if (monney.length() > 0) {
-                                                database.update("DonHang", content, "SoDT=" + dh.getSdt(), null);
-                                            } else {
-                                                soluong += Integer.parseInt(edt_soluong.getText().toString());
-                                                content.put("SoLuong", soluong + "");
-                                                content.put("ThanhTien", thanhtien(soluong + "", sp.getGia() + ""));
-                                                database.update("DonHang", content, "SoDT=" + dh.getSdt(), null);
-                                            }
-                                        } else {
-                                            ContentValues contents = new ContentValues();
-                                            contents.put("TenKH", dh.getTenkh());
-                                            contents.put("SoDT", dh.getSdt());
-                                            contents.put("DiaChi", dh.getDiachi());
-                                            contents.put("Gia", dh.getGia());
-                                            contents.put("SoLuong", edt_soluong.getText().toString());
-                                            contents.put("ThanhTien", dh.getGia());
-                                            database.insert("DonHang", null, contents);
-                                        }
-                                        cursor2.close();
                                     }
                                     Toast.makeText(context, "Đã gửi đơn hàng thành công", Toast.LENGTH_SHORT).show();
                                     Log.e("repont", responseString);
