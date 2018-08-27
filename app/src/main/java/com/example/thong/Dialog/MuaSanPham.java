@@ -5,10 +5,12 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -40,8 +42,9 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
-public class MuaSanPham extends Dialog {
+public class MuaSanPham extends Dialog  {
 
 
     Dialog dialog;
@@ -80,6 +83,11 @@ public class MuaSanPham extends Dialog {
         addEvents();
     }
 
+    @Override
+    public void cancel() {
+        super.cancel();
+    }
+
     private void addEvents() {
         final double giamoi = Double.parseDouble(sp.getGia().substring(0, sp.getGia().length() - 5));
         txt_xacnhan.setOnClickListener(new View.OnClickListener() {
@@ -101,46 +109,52 @@ public class MuaSanPham extends Dialog {
 
                     Toast.makeText(getContext().getApplicationContext(), "Tên khách hàng không được bỏ trống", Toast.LENGTH_LONG).show();
 
-                    Log.e("toast", "Da toast len thong bao");
-                } else if (sdt.length() <= 9 || sdt.length() >= 15) {
-                    Toast.makeText(context, "Bạn vui lòng kiểm tra thừa thiếu số điện thoại", Toast.LENGTH_SHORT).show();
-                } else if (diachi.length() <= 0) {
-                    Toast.makeText(context, "Địa chỉ không hợp lệ", Toast.LENGTH_SHORT).show();
-                } else if (soluong <= 0 || soluong > 100) {
-                    Toast.makeText(context, "Đơn hàng vượt quá số lượng cho phép.Nhập số lượng <=100 sản phẩm", Toast.LENGTH_SHORT).show();
-                } else {
-                    dialog.show();
-                    try {
-                        String donhang = "Tên khách hàng: " + tenkhachhang + "\n" +
-                                "Địa chỉ giao hàng: " + diachi + "\n" +
-                                "Số điện thoại: " + sdt + "\n" +
-                                "Mã sản phẩm: " + sp.getMasp() + "\n" +
-                                "Tên sản phẩm: " + sp.getTensp() + "\n" +
-                                "Đơn giá: " + sp.getGia() + "\n" +
-                                "Số lượng: " + edt_soluong.getText() + "\n" +
-                                "Thành tiền: " + txt_thanhtien.getText().toString();
-                        JSONObject jsonbody = new JSONObject();
-                        jsonbody.put("tenkhachhang", tenkhachhang);
-                        jsonbody.put("donhang", donhang);
-                        final String requestbody = jsonbody.toString();
-                        final StringRequest request = new StringRequest(Request.Method.POST, APIs.api_send_mail, new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                Log.i("resvo", response);
-                            }
-                        }, new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Log.e("errorvo", error.toString());
-                                dialog.cancel();
-                                //Toast.makeText(context, "Gửi thất bại vui lòng thử lại", Toast.LENGTH_SHORT).show();
-                            }
-                        }) {
-                            @Override
-                            public String getBodyContentType() {
-                                Log.e("getBodyConten", "boddyconten");
-                                return "application/json; charset=utf-8";
-                            }
+                 Log.e("toast","Da toast len thong bao");
+             }
+             else if(sdt.length()<=9 || sdt.length()>=15){
+                 Toast.makeText(context, "Bạn vui lòng kiểm tra thừa thiếu số điện thoại", Toast.LENGTH_SHORT).show();
+             }
+             else if(diachi.length()<=0){
+                 Toast.makeText(context, "Địa chỉ không hợp lệ", Toast.LENGTH_SHORT).show();
+             }
+             else if(soluong<=0||soluong>100){
+                 Toast.makeText(context, "Đơn hàng vượt quá số lượng cho phép.Nhập số lượng <=100 sản phẩm", Toast.LENGTH_SHORT).show();
+             }
+             else{
+                 dialog.show();
+                 try {
+                     String donhang="Tên khách hàng: "+tenkhachhang+"\n"+
+                             "Địa chỉ giao hàng: "+diachi+"\n"+
+                             "Số điện thoại: "+sdt+"\n"+
+                             "Mã sản phẩm: "+sp.getMasp()+"\n"+
+                             "Mã Thể Loại: "+sp.getMatheloai()+"\n"+
+                             "Tên sản phẩm: "+sp.getTensp()+"\n"+
+                             "Đơn giá: "+sp.getGia()+"\n"+
+                             "Số lượng: "+edt_soluong.getText()+"\n"+
+                             "Thành tiền: "+txt_thanhtien.getText().toString()+" \n"+
+                             "ID Đơn hàng :"+UUID.randomUUID();
+                     JSONObject  jsonbody =new JSONObject();
+                     jsonbody.put("tenkhachhang",tenkhachhang);
+                     jsonbody.put("donhang",donhang);
+                     final String requestbody =jsonbody.toString();
+                     final StringRequest request =new StringRequest(Request.Method.POST, APIs.api_send_mail, new Response.Listener<String>() {
+                         @Override
+                         public void onResponse(String response) {
+                             Log.i("resvo", response);
+                         }
+                     }, new Response.ErrorListener() {
+                         @Override
+                         public void onErrorResponse(VolleyError error) {
+                             Log.e("errorvo", error.toString());
+                             dialog.cancel();
+                             //Toast.makeText(context, "Gửi thất bại vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                         }
+                     }){
+                         @Override
+                         public String getBodyContentType() {
+                             Log.e("getBodyConten","boddyconten");
+                             return "application/json; charset=utf-8";
+                         }
 
                             @Override
                             public byte[] getBody() throws AuthFailureError {
@@ -161,48 +175,46 @@ public class MuaSanPham extends Dialog {
                                 }
                             }
 
-                            @Override
-                            protected Response<String> parseNetworkResponse(NetworkResponse response) {
-                                Log.e("report", "da nhay vao day");
-                                dialog.cancel();
-                                String responseString = "1";
-                                if (response != null) {
-                                    responseString = String.valueOf(response.statusCode);
-                                    if (responseString.equalsIgnoreCase("200")) {
-                                        database = context.openOrCreateDatabase(APIs.database_name, Context.MODE_PRIVATE, null);
-                                        Cursor cursor = database.rawQuery("SELECT Id,SoLuong FROM GioHang WHERE MaSP=" + sp.getMasp(), null);
-                                        if (cursor.moveToFirst()) {
-                                            int soluong = Integer.parseInt(cursor.getString(1));
-                                            ContentValues contentValues = new ContentValues();
-                                            if (monney.length() > 0) {
-                                                contentValues.put("TrangThai", 1);
-                                                database.update("GioHang", contentValues, "MaSP=" + sp.getMasp(), null);
-                                            } else {
-                                                soluong += Integer.parseInt(edt_soluong.getText().toString());
-                                                contentValues.put("SoLuong", soluong + "");
-                                                contentValues.put("ThanhTien", thanhtien(soluong + "", sp.getGia() + ""));
-                                                contentValues.put("TrangThai", 1);
-                                                database.update("GioHang", contentValues, "MaSP=" + sp.getMasp(), null);
-                                            }
-                                        } else {
-                                            ContentValues contentValues = new ContentValues();
-                                            contentValues.put("TenKH", sp.getTensp());
-                                            contentValues.put("Anh", sp.getAnh());
-                                            contentValues.put("ChiTiet", sp.getChitiet());
-                                            contentValues.put("MaTheLoai", sp.getMatheloai());
-                                            contentValues.put("Gia", sp.getGia());
-                                            contentValues.put("SoLuong", edt_soluong.getText().toString());
-                                            contentValues.put("ThanhTien", sp.getGia());
-                                            contentValues.put("TrangThai", 1);
-                                            database.insert("GioHang", null, contentValues);
-                                        }
-                                        cursor.close();
-                                    }
-                                    Toast.makeText(context, "Đã gửi đơn hàng thành công", Toast.LENGTH_SHORT).show();
-                                    Log.e("repont", responseString);
-                                }
-                                return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
-                            }
+                         @Override
+                         protected Response<String> parseNetworkResponse(NetworkResponse response) {
+                             Log.e("report","da nhay vao day");
+                             dialog.cancel();
+                             String responseString = "1";
+                             if (response != null) {
+                                 responseString = String.valueOf(response.statusCode);
+                                 if(responseString.equalsIgnoreCase("200")){
+                                     database=context.openOrCreateDatabase(APIs.database_name, Context.MODE_PRIVATE,null);
+                                     Cursor cursor =database.rawQuery("SELECT Id,SoLuong FROM GioHang WHERE MaSP="+sp.getMasp(),null);
+                                     if(cursor.moveToFirst()){
+                                         int soluong=Integer.parseInt(cursor.getString(1));
+                                         ContentValues contentValues =new ContentValues();
+                                         soluong+=Integer.parseInt(edt_soluong.getText().toString());
+                                         contentValues.put("SoLuong",soluong+"");
+                                         contentValues.put("ThanhTien",thanhtien(soluong+"",sp.getGia()+""));
+                                         contentValues.put("TrangThai",1);
+                                         database.update("GioHang",contentValues,"MaSP="+sp.getMasp(),null);
+
+                                     }
+                                     else {
+                                         ContentValues contentValues =new ContentValues();
+                                         contentValues.put("MaSP",sp.getMasp());
+                                         contentValues.put("TenSP",sp.getTensp());
+                                         contentValues.put("Anh",sp.getAnh());
+                                         contentValues.put("ChiTiet",sp.getChitiet());
+                                         contentValues.put("MaTheLoai",sp.getMatheloai());
+                                         contentValues.put("Gia",sp.getGia());
+                                         contentValues.put("SoLuong",edt_soluong.getText().toString());
+                                         contentValues.put("ThanhTien",sp.getGia());
+                                         contentValues.put("TrangThai",1);
+                                         database.insert("GioHang",null,contentValues);
+                                     }
+                                     cursor.close();
+                                     Toast.makeText(context, "Gửi đơn hàng thành công", Toast.LENGTH_SHORT).show();
+                                     Log.e("repont",responseString);
+                                 }
+                             }
+                             return Response.success(responseString, HttpHeaderParser.parseCacheHeaders(response));
+                         }
 
                             @Override
                             protected VolleyError parseNetworkError(VolleyError volleyError) {

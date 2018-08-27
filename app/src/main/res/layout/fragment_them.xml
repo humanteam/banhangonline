@@ -13,6 +13,19 @@
 
     <TextView
         android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="-69dp"
+        android:layout_marginStart="-69dp"
+        android:layout_toEndOf="@+id/imageView3"
+        android:layout_toRightOf="@+id/imageView3"
+        android:gravity="center"
+        android:text="Buy Online"
+        android:textColor="#000"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="69dp"
         android:background="#bdb4b4" />

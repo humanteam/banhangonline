@@ -17,7 +17,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import com.example.thong.APIs;
 import com.example.thong.fragment.fragment_them;
@@ -40,18 +42,18 @@ import devlight.io.library.ntb.NavigationTabBar;
 public class MainActivity extends AppCompatActivity {
 
     private final int REQUEST_CALL_CODE = 100;
-    AdView adView;
+    //AdView adView;
     Database database;
     FragmentManager manager = getFragmentManager();
     NavigationTabBar navigationTabBar;
     ArrayList<NavigationTabBar.Model> listmodel = new ArrayList<>();
     HashMap<String, Fragment> listFragment = new HashMap<>();
-
+    private ViewFlipper viewFlipper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MobileAds.initialize(this, APIs.admod_id);
+        //MobileAds.initialize(this, APIs.admod_id);
         database = new Database(this, APIs.database_name, null, 1);
         database.create_TB_GioHang();
         database.create_TB_DonHang();
@@ -61,11 +63,28 @@ public class MainActivity extends AppCompatActivity {
         } else {
             changeFragment(listFragment.get("home"), manager, "home", 0);
         }
+
         request_permission();
         addControlls();
         addEvent();
     }
+    private void initViewFlipper() {
+        int images[] = {R.drawable.aa, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e};
+        viewFlipper = findViewById(R.id.v_fliper);
+        for (int image : images) {
+            FlipperImage(image);
+        }
+    }
 
+    public void FlipperImage(int image) {
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setBackgroundResource(image);
+        viewFlipper.addView(imageView);
+        viewFlipper.setFlipInterval(4000);
+        viewFlipper.setAutoStart(true);
+        viewFlipper.setInAnimation(getApplicationContext(), android.R.anim.slide_in_left);
+        viewFlipper.setOutAnimation(getApplicationContext(), android.R.anim.slide_out_right);
+    }
     private void addData() {
         listFragment.put("home", new fragment_home());
         listFragment.put("mypham", new fragment_mypham());
@@ -100,10 +119,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addControlls() {
-
-        adView = findViewById(R.id.admod);
-        AdRequest request = new AdRequest.Builder().build();
-        adView.loadAd(request);
+        initViewFlipper();
+        //adView = findViewById(R.id.v_fliper);
+        //AdRequest request = new AdRequest.Builder().build();
+        //adView.loadAd(request);
         navigationTabBar = findViewById(R.id.ntb);
         navigationTabBar.setModels(listmodel);
         navigationTabBar.setModelIndex(0);
@@ -116,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addEvent() {
+
         navigationTabBar.setOnTabBarSelectedIndexListener(new NavigationTabBar.OnTabBarSelectedIndexListener() {
             @Override
             public void onStartTabSelected(NavigationTabBar.Model model, int index) {
@@ -231,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             }
             else {
-                request_permission();
+
             }
         }
     }

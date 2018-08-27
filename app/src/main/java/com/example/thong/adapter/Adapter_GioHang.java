@@ -84,11 +84,13 @@ public class Adapter_GioHang extends RecyclerView.Adapter<Adapter_GioHang.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView img_giohang;
+        ImageView img_giohang,imgCong,imgTru;
         Button btnMuagiohang,btnXoagiohang,btnGia;
         TextView txttensp,txttrangthai,txt_soluongiohang;
         public ViewHolder(View itemView) {
             super(itemView);
+            imgCong=itemView.findViewById(R.id.imgcong);
+            imgTru=itemView.findViewById(R.id.imgtru);
             txt_soluongiohang=itemView.findViewById(R.id.txt_soluonggiohang);
             img_giohang=itemView.findViewById(R.id.img_giohang);
             btnMuagiohang=itemView.findViewById(R.id.btn_muagiohang);

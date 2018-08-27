@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:fillViewport="true"
         android:scrollbars="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -20,9 +21,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.17"
                 android:layout_marginLeft="5dp"
-                android:orientation="vertical" 
+                android:layout_weight="0.17"
+                android:orientation="vertical"
                 android:weightSum="1">
 
                 <TextView
@@ -50,6 +51,15 @@
                     android:background="@drawable/don_hang_boder"
                     android:gravity="center"
                     android:text="Địa chỉ nhận hàng"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/don_hang_boder"
+                    android:gravity="center"
+                    android:text="Email"
                     android:textColor="#000" />
 
                 <TextView
@@ -98,13 +108,13 @@
                 android:weightSum="1">
 
                 <EditText
-                    android:maxLength="200"
                     android:id="@+id/edt_khachhang"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:backgroundTint="#000"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="30dp"
+                    android:backgroundTint="#000"
+                    android:maxLength="200"
                     android:textColor="#000"
                     android:textSize="17dp" />
 
@@ -123,9 +133,19 @@
                     android:id="@+id/edt_diachi"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:backgroundTint="#000"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="25dp"
+                    android:backgroundTint="#000"
+                    android:textColor="#000"
+                    android:textSize="17dp" />
+
+                <EditText
+                    android:id="@+id/edt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="25dp"
+                    android:backgroundTint="#000"
                     android:textColor="#000"
                     android:textSize="17dp" />
 
@@ -133,9 +153,9 @@
                     android:id="@+id/txt_tenmathang"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:gravity="center"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="25dp"
+                    android:gravity="center"
                     android:textColor="#000"
                     android:textSize="17dp" />
 
@@ -143,12 +163,12 @@
                     android:id="@+id/edt_soluong"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-                    android:gravity="center"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="30dp"
+                    android:backgroundTint="#000"
+                    android:gravity="center"
                     android:inputType="number"
                     android:text="1"
-                    android:backgroundTint="#000"
                     android:textColor="#000"
                     android:textSize="17dp" />
 
@@ -191,11 +211,11 @@
                         android:id="@+id/txt_thanhtien"
                         android:layout_width="192dp"
                         android:layout_height="40dp"
-                        android:gravity="center"
-                        android:textSize="17dp"
-                        android:text="1"
                         android:layout_marginLeft="10dp"
-                        android:textColor="#000" />
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="#000"
+                        android:textSize="17dp" />
 
                     <TextView
                         android:layout_width="40dp"
