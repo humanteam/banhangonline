@@ -1,7 +1,6 @@
 package com.example.thong.banhangonline;
-
 import android.Manifest;
-import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -18,14 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
-import android.widget.ViewFlipper;
 
 import com.example.thong.APIs;
 import com.example.thong.fragment.fragment_them;
@@ -34,6 +26,11 @@ import com.example.thong.fragment.fragment_giohang;
 import com.example.thong.fragment.fragment_home;
 import com.example.thong.fragment.fragment_mypham;
 import com.example.thong.fragment.fragment_toc;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,54 +38,31 @@ import java.util.HashMap;
 import devlight.io.library.ntb.NavigationTabBar;
 
 public class MainActivity extends AppCompatActivity {
+
     private final int REQUEST_CALL_CODE = 100;
+    AdView adView;
     Database database;
     FragmentManager manager = getFragmentManager();
     NavigationTabBar navigationTabBar;
     ArrayList<NavigationTabBar.Model> listmodel = new ArrayList<>();
     HashMap<String, Fragment> listFragment = new HashMap<>();
-    RelativeLayout rl1;
-    private ViewFlipper viewFlipper;
-    FrameLayout frameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MobileAds.initialize(this, APIs.admod_id);
         database = new Database(this, APIs.database_name, null, 1);
         database.create_TB_GioHang();
-        database.create_TB_DonHang();
         addData();
         if (!checkinternet()) {
             Toast.makeText(getApplicationContext(), "Please checked internet !", Toast.LENGTH_LONG).show();
         } else {
             changeFragment(listFragment.get("home"), manager, "home", 0);
         }
-
         request_permission();
         addControlls();
         addEvent();
-    }
-
-
-
-    private void initViewFlipper() {
-        int images[] = {R.drawable.aa, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e};
-        viewFlipper = findViewById(R.id.v_fliper);
-        for (int image : images) {
-            FlipperImage(image);
-        }
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    public void FlipperImage(int image) {
-        ImageView imageView = new ImageView(getApplicationContext());
-        imageView.setBackgroundResource(image);
-        viewFlipper.addView(imageView);
-        viewFlipper.setFlipInterval(4000);
-        viewFlipper.setAutoStart(true);
-        viewFlipper.setInAnimation(getApplicationContext(), android.R.anim.slide_in_left);
-        viewFlipper.setOutAnimation(getApplicationContext(), android.R.anim.slide_out_right);
     }
 
     private void addData() {
@@ -125,9 +99,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addControlls() {
-        initViewFlipper();
-        frameLayout = findViewById(R.id.viewpager);
-        rl1 = (RelativeLayout) findViewById(R.id.rl1);
+
+        adView = findViewById(R.id.admod);
+        AdRequest request = new AdRequest.Builder().build();
+        adView.loadAd(request);
         navigationTabBar = findViewById(R.id.ntb);
         navigationTabBar.setModels(listmodel);
         navigationTabBar.setModelIndex(0);
@@ -140,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addEvent() {
-
         navigationTabBar.setOnTabBarSelectedIndexListener(new NavigationTabBar.OnTabBarSelectedIndexListener() {
             @Override
             public void onStartTabSelected(NavigationTabBar.Model model, int index) {
@@ -242,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
     private void request_permission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED
-                    && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PRIVILEGED) != PackageManager.PERMISSION_GRANTED) {
+                    && ActivityCompat.checkSelfPermission(getApplicationContext(),Manifest.permission.CALL_PRIVILEGED)!=PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL_CODE);
             }
         }
@@ -251,10 +225,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_CALL_CODE) {
+        if(requestCode==REQUEST_CALL_CODE){
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            } else {
+            }
+            else {
 
             }
         }
