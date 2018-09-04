@@ -8,34 +8,22 @@
     android:background="#e1e8e9"
     android:orientation="vertical">
 
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/rl1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp">
 
-        <RelativeLayout
+        <FrameLayout
+            android:id="@+id/viewpager"
+            android:layout_below="@id/v_fliper"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="50dp">
+            android:layout_weight="1"
+            tools:ignore="Suspicious0dp">
 
-
-            <ViewFlipper
-                android:id="@+id/v_fliper"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_centerHorizontal="true" />
-
-            <FrameLayout
-                android:id="@+id/viewpager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="250dp"
-                android:layout_marginBottom="50dp"
-                android:layout_weight="1"
-                tools:ignore="Suspicious0dp">
-
-            </FrameLayout>
-        </RelativeLayout>
-    </ScrollView>
+        </FrameLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/sl"
