@@ -1,7 +1,7 @@
 package com.example.thong;
 
 public class APIs {
-    public static String server = "http://192.168.2.14";
+    public static String server = "http://172.20.10.2";
     public static String api_home =server+"/api/sanpham";//api home==>trả về tất cả các sp
     public static String api_mypham=server+"/api/sanpham/1";//trả về danh sách mỹ phẩm
     public static String api_toc=server+"/api/sanpham/2";//Trả về danh sách sản phẩm tóc

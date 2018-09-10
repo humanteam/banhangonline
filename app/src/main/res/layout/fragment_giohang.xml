@@ -73,6 +73,8 @@
                         android:layout_weight="0.5"
                         android:background="@drawable/item_gio_hang_boder"
                         android:gravity="center"
+                        android:maxLines="2"
+                        android:textSize="11sp"
                         android:src="@drawable/don_hang_boder"
                         android:text="Số lượng"
                         android:textColor="#000" />
